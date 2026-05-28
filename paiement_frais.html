@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Paiement Sécurisé - UDBL</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <style>
+        .pay-container { max-width: 450px; margin: 50px auto; padding: 30px; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .method-btn { display: flex; align-items: center; width: 100%; padding: 15px; margin: 10px 0; border: 1px solid #edf2f7; border-radius: 12px; background: #fff; cursor: pointer; transition: 0.3s; }
+        .method-btn:hover { border-color: #0056b3; background: #f8fbff; }
+        .method-btn span { margin-right: 15px; font-size: 20px; }
+    </style>
+</head>
+<body class="theme-page-services">
+    <div class="pay-container">
+        <h2>Règlement UDBL</h2>
+        <p>Montant dû : <strong>350.00 USD</strong></p>
+        
+        <form id="payForm">
+            <input type="text" placeholder="Matricule étudiant" style="width:100%; padding:12px; margin:10px 0; border:1px solid #ccc; border-radius:8px;" required>
+            <input type="tel" placeholder="Numéro de téléphone (Ex: 08XXXXXXXX)" style="width:100%; padding:12px; margin:10px 0; border:1px solid #ccc; border-radius:8px;" required>
+            
+            <p style="font-size: 0.9em; margin-top: 15px;">Choisissez votre canal de paiement :</p>
+            <button type="button" class="method-btn"><span>📱</span> Orange Money (Max it)</button>
+            <button type="button" class="method-btn"><span>📱</span> Airtel Money</button>
+            <button type="button" class="method-btn"><span>📱</span> M-Pesa</button>
+            <button type="button" class="method-btn"><span>💳</span> Carte Visa / Mastercard</button>
+            
+            <button type="submit" class="btn-service" style="width: 100%; margin-top: 20px;">Confirmer le paiement</button>
+        </form>
+    </div>
+</body>
+</html>

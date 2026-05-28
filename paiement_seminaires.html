@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paiement Séminaires - UDBL</title>
+    <link rel="stylesheet" href="CSS/style.css">
+<base target="_blank">
+</head>
+<body class="theme-clair" style="background-color: #ffffff !important; color: #222222;">
+    <header>
+        <div class="titre_header">
+            <img src="images/UDBL.png" alt="logo UDBL">
+            <div>
+                <h2>UNIVERSITE DON BOSCO</h2>
+                <h2>LUBUMBASHI</h2>
+            </div>
+        </div>
+        <button class="menu-toggle" aria-label="Ouvrir le menu">☰</button>
+        <nav class="navBar">
+            <a href="index.html">Accueil</a>
+            <a href="programme.html">Programme</a>
+            <a href="service.html" class="active">Services</a>
+            <a href="vie_etudiant.html">Vie d'étudiant</a>
+            <a href="a_propos.html">À propos</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <section class="services-intro-header reveal" style="padding-top: 120px !important;">
+            <span class="title-badge-custom">Événements</span>
+            <h1 class="sousTitre-programme">Paiement Séminaires & Ateliers</h1>
+            <p class="des-programme-custom">
+                Inscrivez-vous et payez votre participation aux conférences, séminaires de recherche et ateliers de formation pratique organisés par l'UDBL.
+            </p>
+        </section>
+
+        <section style="padding: 40px 20px; background: #ffffff;">
+            <div style="max-width: 1000px; margin: 0 auto;">
+                <h2 style="text-align: center; color: var(--bleu_primaire); font-size: clamp(20px, 2.5vw, 28px); margin-bottom: 40px;">Prochains Séminaires à Payer</h2>
+                <div class="grid-services-custom">
+                    <div class="card-service-custom reveal delay-1">
+                        <div class="icon-circle">🤖</div>
+                        <h3>IA & Machine Learning</h3>
+                        <p style="font-size: 24px; font-weight: bold; color: var(--bleu_primaire); margin: 10px 0;">20 $</p>
+                        <p>Séminaire 3 jours sur l'intelligence artificielle appliquée. Certificat délivré.</p>
+                        <p style="font-size: 12px; color: #888; margin-top: 8px;">📅 15-17 Juillet 2026</p>
+                    </div>
+                    <div class="card-service-custom reveal delay-2">
+                        <div class="icon-circle">🔒</div>
+                        <h3>Cybersécurité Avancée</h3>
+                        <p style="font-size: 24px; font-weight: bold; color: var(--bleu_primaire); margin: 10px 0;">25 $</p>
+                        <p>Atelier pratique de 2 jours sur la sécurité des réseaux et des données.</p>
+                        <p style="font-size: 12px; color: #888; margin-top: 8px;">📅 22-23 Août 2026</p>
+                    </div>
+                    <div class="card-service-custom reveal delay-3">
+                        <div class="icon-circle">📈</div>
+                        <h3>Entrepreneuriat Digital</h3>
+                        <p style="font-size: 24px; font-weight: bold; color: var(--bleu_primaire); margin: 10px 0;">15 $</p>
+                        <p>Conférence et atelier sur le lancement de startup tech en RDC.</p>
+                        <p style="font-size: 12px; color: #888; margin-top: 8px;">📅 05 Septembre 2026</p>
+                    </div>
+                    <div class="card-service-custom reveal delay-4">
+                        <div class="icon-circle">🌱</div>
+                        <h3>Développement Durable</h3>
+                        <p style="font-size: 24px; font-weight: bold; color: var(--bleu_primaire); margin: 10px 0;">10 $</p>
+                        <p>Séminaire interdisciplinaire sur les enjeux environnementaux en Afrique.</p>
+                        <p style="font-size: 12px; color: #888; margin-top: 8px;">📅 12 Septembre 2026</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="padding: 40px 20px; background: #f8fafc;">
+            <div class="container-contact-custom reveal" style="max-width: 800px; margin: 0 auto;">
+                <div class="form-wrapper-custom" style="width: 100%; max-width: 100%;">
+                    <h2>Inscription & Paiement</h2>
+                    <form action="#" method="POST">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                            <div class="form-group-custom">
+                                <label for="nom">Nom complet</label>
+                                <input type="text" id="nom" name="nom" required placeholder="Ex: Sarah Kabongo">
+                            </div>
+                            <div class="form-group-custom">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required placeholder="Ex: sarah.k@udbl.edu">
+                            </div>
+                        </div>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                            <div class="form-group-custom">
+                                <label for="matricule">Matricule (si étudiant UDBL)</label>
+                                <input type="text" id="matricule" name="matricule" placeholder="Ex: UDBL-2024-012">
+                            </div>
+                            <div class="form-group-custom">
+                                <label for="telephone">Téléphone</label>
+                                <input type="tel" id="telephone" name="telephone" required placeholder="Ex: +243 812 345 678">
+                            </div>
+                        </div>
+                        <div class="form-group-custom">
+                            <label for="seminaire">Séminaire choisi</label>
+                            <select id="seminaire" name="seminaire" style="width: 100%; padding: 14px; border: 1px solid #cbd5e1; border-radius: 12px; font-size: 14px; color: #333; background: white; outline: none;">
+                                <option>IA & Machine Learning - 20 $ (15-17 Juillet)</option>
+                                <option>Cybersécurité Avancée - 25 $ (22-23 Août)</option>
+                                <option>Entrepreneuriat Digital - 15 $ (05 Septembre)</option>
+                                <option>Développement Durable - 10 $ (12 Septembre)</option>
+                            </select>
+                        </div>
+                        <div class="form-group-custom">
+                            <label for="statut">Statut</label>
+                            <select id="statut" name="statut" style="width: 100%; padding: 14px; border: 1px solid #cbd5e1; border-radius: 12px; font-size: 14px; color: #333; background: white; outline: none;">
+                                <option>Étudiant UDBL</option>
+                                <option>Étudiant externe</option>
+                                <option>Professionnel</option>
+                                <option>Enseignant / Chercheur</option>
+                            </select>
+                        </div>
+                        <div class="form-group-custom">
+                            <label for="mode_paiement">Mode de paiement</label>
+                            <select id="mode_paiement" name="mode_paiement" style="width: 100%; padding: 14px; border: 1px solid #cbd5e1; border-radius: 12px; font-size: 14px; color: #333; background: white; outline: none;">
+                                <option>Mobile Money</option>
+                                <option>Virement Bancaire</option>
+                                <option>Carte Bancaire</option>
+                                <option>Paiement Cash au Secrétariat des Conférences</option>
+                            </select>
+                        </div>
+                        <div class="form-group-custom">
+                            <label for="message">Questions ou demandes spéciales</label>
+                            <textarea id="message" name="message" rows="3" placeholder="Régime alimentaire, accessibilité, etc."></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit-custom">S'inscrire et payer</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section style="padding: 40px 20px; background: #ffffff;">
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <div style="background: #f3e5f5; border-left: 4px solid #7b1fa2; padding: 20px; border-radius: 12px; text-align: left;">
+                    <h4 style="color: var(--bleu_primaire); margin-bottom: 10px;">🎓 Avantages inclus</h4>
+                    <ul style="font-size: 13px; color: #555; line-height: 1.8; padding-left: 20px;">
+                        <li>Certificat de participation délivré à la fin de chaque séminaire.</li>
+                        <li>Support de cours et ressources numériques fournis.</li>
+                        <li>Pause-café et collation incluses pour les séminaires d'une journée.</li>
+                        <li>Accès au réseau des participants et conférenciers.</li>
+                        <li>Annulation gratuite jusqu'à 7 jours avant l'événement.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Université Don Bosco</h3>
+                <p>Lubumbashi, RDC</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>contact@udbl.edu</p>
+            </div>
+            <div class="footer-section">
+                <h3>Suivez-nous</h3>
+                <p>Facebook | Twitter | Instagram</p>
+            </div>
+        </div>
+        <p class="copyright">© 2026 UDBL - Tous droits réservés</p>
+    </footer>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navBar = document.querySelector('.navBar');
+        if (menuToggle && navBar) {
+            menuToggle.addEventListener('click', () => { 
+                navBar.classList.toggle('active'); 
+            });
+        }
+
+        const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+        const checkVisibility = () => {
+            reveals.forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight * 0.88) {
+                    el.classList.add('visible');
+                }
+            });
+        };
+        window.addEventListener('scroll', checkVisibility);
+        checkVisibility();
+
+        const header = document.querySelector('header');
+        let lastScrollY = window.scrollY;
+        header.classList.add('scrolled-vrai');
+        header.style.transition = "transform 0.4s ease-in-out, background-color 0.3s ease";
+
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            if (currentScrollY > lastScrollY && currentScrollY > 50) {
+                header.style.transform = "translateY(-100%)";
+            } else {
+                header.style.transform = "translateY(0)";
+                header.classList.add('scrolled-vrai');
+            }
+            lastScrollY = currentScrollY;
+        });
+    });
+    </script>
+</body>
+</html>

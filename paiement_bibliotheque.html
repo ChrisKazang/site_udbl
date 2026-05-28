@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paiement Bibliothèque - UDBL</title>
+    <link rel="stylesheet" href="CSS/style.css">
+<base target="_blank">
+</head>
+<body class="theme-clair" style="background-color: #ffffff !important; color: #222222;">
+    <header>
+        <div class="titre_header">
+            <img src="images/UDBL.png" alt="logo UDBL">
+            <div>
+                <h2>UNIVERSITE DON BOSCO</h2>
+                <h2>LUBUMBASHI</h2>
+            </div>
+        </div>
+        <button class="menu-toggle" aria-label="Ouvrir le menu">☰</button>
+        <nav class="navBar">
+            <a href="index.html">Accueil</a>
+            <a href="programme.html">Programme</a>
+            <a href="service.html" class="active">Services</a>
+            <a href="vie_etudiant.html">Vie d'étudiant</a>
+            <a href="a_propos.html">À propos</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <section class="services-intro-header reveal" style="padding-top: 120px !important;">
+            <span class="title-badge-custom">Bibliothèque</span>
+            <h1 class="sousTitre-programme">Paiement Bibliothèque</h1>
+            <p class="des-programme-custom">
+                Réglez votre abonnement annuel à la bibliothèque universitaire ou acquittez vos amendes de retard en quelques clics.
+            </p>
+        </section>
+
+        <section style="padding: 40px 20px; background: #ffffff;">
+            <div style="max-width: 1000px; margin: 0 auto;">
+                <h2 style="text-align: center; color: var(--bleu_primaire); font-size: clamp(20px, 2.5vw, 28px); margin-bottom: 40px;">Tarifs Bibliothèque</h2>
+                <div class="grid-services-custom">
+                    <div class="card-service-custom reveal delay-1">
+                        <div class="icon-circle">📚</div>
+                        <h3>Abonnement Annuel</h3>
+                        <p style="font-size: 24px; font-weight: bold; color: var(--bleu_primaire); margin: 10px 0;">25 $</p>
+                        <p>Accès illimité à la salle de lecture, prêt de 3 ouvrages simultanés, Wi-Fi gratuit.</p>
+                    </div>
+                    <div class="card-service-custom reveal delay-2">
+                        <div class="icon-circle">📖</div>
+                        <h3>Abonnement Semestriel</h3>
+                        <p style="font-size: 24px; font-weight: bold; color: var(--bleu_primaire); margin: 10px 0;">15 $</p>
+                        <p>Idéal pour un semestre court. Mêmes avantages que l'abonnement annuel.</p>
+                    </div>
+                    <div class="card-service-custom reveal delay-3">
+                        <div class="icon-circle">⏰</div>
+                        <h3>Amende de Retard</h3>
+                        <p style="font-size: 24px; font-weight: bold; color: var(--bleu_primaire); margin: 10px 0;">2 $ / jour</p>
+                        <p>Par ouvrage et par jour de retard au-delà des 15 jours de prêt initial.</p>
+                    </div>
+                    <div class="card-service-custom reveal delay-4">
+                        <div class="icon-circle">💻</div>
+                        <h3>Accès Numérique Premium</h3>
+                        <p style="font-size: 24px; font-weight: bold; color: var(--bleu_primaire); margin: 10px 0;">10 $</p>
+                        <p>Accès aux bases de données en ligne, e-books et archives numériques spécialisées.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="padding: 40px 20px; background: #f8fafc;">
+            <div class="container-contact-custom reveal" style="max-width: 800px; margin: 0 auto;">
+                <div class="form-wrapper-custom" style="width: 100%; max-width: 100%;">
+                    <h2>Payer mon Abonnement ou Amende</h2>
+                    <form action="#" method="POST">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                            <div class="form-group-custom">
+                                <label for="nom">Nom complet</label>
+                                <input type="text" id="nom" name="nom" required placeholder="Ex: Marie Tshibangu">
+                            </div>
+                            <div class="form-group-custom">
+                                <label for="matricule">Matricule étudiant</label>
+                                <input type="text" id="matricule" name="matricule" required placeholder="Ex: UDBL-2023-045">
+                            </div>
+                        </div>
+                        <div class="form-group-custom">
+                            <label for="type_paiement">Type de paiement</label>
+                            <select id="type_paiement" name="type_paiement" style="width: 100%; padding: 14px; border: 1px solid #cbd5e1; border-radius: 12px; font-size: 14px; color: #333; background: white; outline: none;">
+                                <option>Abonnement Annuel (25 $)</option>
+                                <option>Abonnement Semestriel (15 $)</option>
+                                <option>Accès Numérique Premium (10 $)</option>
+                                <option>Amende de Retard (montant variable)</option>
+                            </select>
+                        </div>
+                        <div class="form-group-custom">
+                            <label for="montant">Montant à payer ($)</label>
+                            <input type="number" id="montant" name="montant" required placeholder="Ex: 25" min="1">
+                        </div>
+                        <div class="form-group-custom">
+                            <label for="mode_paiement">Mode de paiement</label>
+                            <select id="mode_paiement" name="mode_paiement" style="width: 100%; padding: 14px; border: 1px solid #cbd5e1; border-radius: 12px; font-size: 14px; color: #333; background: white; outline: none;">
+                                <option>Mobile Money</option>
+                                <option>Virement Bancaire</option>
+                                <option>Carte Bancaire</option>
+                                <option>Paiement Cash à la Bibliothèque</option>
+                            </select>
+                        </div>
+                        <div class="form-group-custom">
+                            <label for="telephone">Téléphone</label>
+                            <input type="tel" id="telephone" name="telephone" required placeholder="Ex: +243 812 345 678">
+                        </div>
+                        <button type="submit" class="btn-submit-custom">Valider le paiement</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section style="padding: 40px 20px; background: #ffffff;">
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <div style="background: #fff3e0; border-left: 4px solid #e67e22; padding: 20px; border-radius: 12px; text-align: left;">
+                    <h4 style="color: var(--bleu_primaire); margin-bottom: 10px;">⚠️ Rappel important</h4>
+                    <ul style="font-size: 13px; color: #555; line-height: 1.8; padding-left: 20px;">
+                        <li>L'abonnement est obligatoire pour emprunter des ouvrages.</li>
+                        <li>Les amendes doivent être réglées avant toute nouvelle inscription ou réinscription.</li>
+                        <li>Conservez votre reçu pour lever les restrictions sur votre compte bibliothèque.</li>
+                        <li>Contact : <strong>biblio@udbl.edu</strong> ou au <strong>+243 812 345 679</strong>.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Université Don Bosco</h3>
+                <p>Lubumbashi, RDC</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>contact@udbl.edu</p>
+            </div>
+            <div class="footer-section">
+                <h3>Suivez-nous</h3>
+                <p>Facebook | Twitter | Instagram</p>
+            </div>
+        </div>
+        <p class="copyright">© 2026 UDBL - Tous droits réservés</p>
+    </footer>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navBar = document.querySelector('.navBar');
+        if (menuToggle && navBar) {
+            menuToggle.addEventListener('click', () => { 
+                navBar.classList.toggle('active'); 
+            });
+        }
+
+        const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+        const checkVisibility = () => {
+            reveals.forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight * 0.88) {
+                    el.classList.add('visible');
+                }
+            });
+        };
+        window.addEventListener('scroll', checkVisibility);
+        checkVisibility();
+
+        const header = document.querySelector('header');
+        let lastScrollY = window.scrollY;
+        header.classList.add('scrolled-vrai');
+        header.style.transition = "transform 0.4s ease-in-out, background-color 0.3s ease";
+
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            if (currentScrollY > lastScrollY && currentScrollY > 50) {
+                header.style.transform = "translateY(-100%)";
+            } else {
+                header.style.transform = "translateY(0)";
+                header.classList.add('scrolled-vrai');
+            }
+            lastScrollY = currentScrollY;
+        });
+    });
+    </script>
+</body>
+</html>

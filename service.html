@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services - Université Don Bosco de Lubumbashi</title>
     <link rel="stylesheet" href="CSS/style.css">
+<base target="_blank">
 </head>
 <body class="theme-page-services">
 
@@ -19,10 +20,10 @@
         <button class="menu-toggle" aria-label="Ouvrir le menu">☰</button>
         <nav class="navBar">
             <a href="index.html">Accueil</a>
-            <a href="a_propos.html">À propos</a>
             <a href="programme.html">Programme</a>
-            <a href="vie_etudiant.html">Vie d'étudiant</a>
             <a href="service.html" class="active">Services</a>
+            <a href="vie_etudiant.html">Vie d'étudiant</a>
+            <a href="a_propos.html">À propos</a>
             <a href="contact.html">Contact</a>
         </nav>
     </header>
@@ -38,50 +39,49 @@
 
         <section class="section-services-grid">
             <div class="grid-services-custom">
-                
+
                 <div class="card-service-custom reveal delay-1">
-                    <div class="service-icon-wrapper">
-                        <div class="icon-circle">💳</div>
-                    </div>
+                    <div class="service-icon-wrapper"><div class="icon-circle">💳</div></div>
                     <h3>Paiement de Frais</h3>
-                    <p>Gérez vos transactions académiques en toute sécurité. Accès aux paiements en ligne des frais de scolarité, réinscription, et sessions d'examens via nos banques partenaires et solutions de mobile money.</p>
-                    <div class="service-action">
-                        <a href="#" class="btn-service">Accéder au portail</a>
-                    </div>
+                    <p>Accédez au portail de paiement sécurisé pour vos frais académiques, tutorat, bibliothèque ou vos séminaires.</p>
+                    <div class="service-action"><a href="paiement.html" class="btn-service">Accéder au portail</a></div>
                 </div>
 
                 <div class="card-service-custom reveal delay-2">
-                    <div class="service-icon-wrapper">
-                        <div class="icon-circle">🎓</div>
-                    </div>
+                    <div class="service-icon-wrapper"><div class="icon-circle">🎓</div></div>
                     <h3>Tutorat & Accompagnement</h3>
-                    <p>Bénéficiez d'un soutien académique personnalisé. Nos tuteurs (étudiants aînés et assistants) vous aident à surmonter les difficultés dans les matières clés.</p>
-                    <div class="service-action">
-                        <a href="#" class="btn-service">Demander un tuteur</a>
-                    </div>
+                    <p>Bénéficiez d'un soutien académique personnalisé. Nos tuteurs vous aident à surmonter les difficultés dans les matières clés.</p>
+                    <div class="service-action"><a href="tutorat.html" class="btn-service">Demander un tuteur</a></div>
                 </div>
 
                 <div class="card-service-custom reveal delay-3">
-                    <div class="service-icon-wrapper">
-                        <div class="icon-circle">🚌</div>
-                    </div>
+                    <div class="service-icon-wrapper"><div class="icon-circle">🚌</div></div>
                     <h3>Transport Académique</h3>
-                    <p>Consultez les lignes de bus de l'UDBL et les grilles horaires en temps réel pour vos trajets quotidiens à travers la ville de Lubumbashi vers le campus universitaire.</p>
-                    <div class="service-action">
-                        <a href="#horaires-bus" class="btn-service">Voir les horaires</a>
-                    </div>
+                    <p>Consultez les lignes de bus de l'UDBL et les grilles horaires en temps réel pour vos trajets vers le campus.</p>
+                    <div class="service-action"><a href="#horaires-bus" class="btn-service">Voir les horaires</a></div>
                 </div>
 
                 <div class="card-service-custom reveal delay-4">
-                    <div class="service-icon-wrapper">
-                        <div class="icon-circle">📚</div>
-                    </div>
+                    <div class="service-icon-wrapper"><div class="icon-circle">📚</div></div>
                     <h3>Bibliothèque & Ressources</h3>
-                    <p>Accédez à des milliers d'ouvrages, articles scientifiques, encyclopédies en ligne et syllabus officiels pour vos travaux de recherche et vos révisions.</p>
-                    <div class="service-action">
-                        <a href="#" class="btn-service">Consulter le catalogue</a>
-                    </div>
+                    <p>Accédez à des milliers d'ouvrages, articles scientifiques et syllabus officiels pour vos travaux de recherche.</p>
+                    <div class="service-action"><a href="bibliotheque.html" class="btn-service">Consulter le catalogue</a></div>
                 </div>
+
+                <div class="card-service-custom reveal delay-5">
+                    <div class="service-icon-wrapper"><div class="icon-circle">🏥</div></div>
+                    <h3>Infirmerie</h3>
+                    <p>Service de soins de santé de premier secours disponible pour tous les étudiants et le personnel sur le campus.</p>
+                    <div class="service-action"><a href="infirmerie.html" class="btn-service">Contacter l'infirmerie</a></div>
+                </div>
+
+                <div class="card-service-custom reveal delay-6">
+                    <div class="service-icon-wrapper"><div class="icon-circle">💼</div></div>
+                    <h3>Orientation Pro</h3>
+                    <p>Conseils et accompagnement pour vos stages, votre insertion professionnelle et votre carrière future.</p>
+                    <div class="service-action"><a href="orientation.html" class="btn-service">Prendre RDV</a></div>
+                </div>
+
             </div>
         </section>
 
@@ -90,7 +90,7 @@
                 <div class="horaires-texte">
                     <h2 class="faculte-titre-custom">Horaires des Navettes de Bus</h2>
                     <p class="op">Le réseau de transport officiel assure la liaison régulière entre les points névralgiques de Lubumbashi et le campus.</p>
-                    
+
                     <div class="options-wrapper-custom">
                         <div class="item-option-custom">
                             <h3>Ligne 1 : Centre-Ville ➔ Campus UDBL</h3>
@@ -100,19 +100,6 @@
                             <h3>Ligne 2 : Golf / Carrefour ➔ Campus UDBL</h3>
                             <p><strong>Départs matin :</strong> 06h30, 07h20 | <strong>Retours :</strong> 14h15, 17h00</p>
                         </div>
-                        <div class="item-option-custom">
-                            <h3>Ligne 3 : Kamalondo / Kenya ➔ Campus UDBL</h3>
-                            <p><strong>Départs matin :</strong> 06h40, 07h30 | <strong>Retours :</strong> 13h00, 16h45</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="image-faculte-wrapper floating-effect">
-                    <div class="bus-placeholder-card">
-                        <div class="bus-badge">Réseau Officiel</div>
-                        <span class="bus-icon">🚌</span>
-                        <h4>Abonnement Mensuel</h4>
-                        <p>Inscrivez-vous au guichet de l'intendance pour retirer votre carte magnétique.</p>
                     </div>
                 </div>
             </div>
@@ -137,12 +124,10 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Menu mobile
             const menuToggle = document.querySelector('.menu-toggle');
             const navBar = document.querySelector('.navBar');
             menuToggle?.addEventListener('click', () => navBar.classList.toggle('active'));
 
-            // Header intelligent
             const header = document.querySelector('header');
             let lastScrollY = window.scrollY;
             header.classList.add('scrolled-vrai');
@@ -157,7 +142,6 @@
                 }
                 lastScrollY = currentScrollY;
 
-                // Scroll Reveal
                 document.querySelectorAll('.reveal').forEach(el => {
                     if (el.getBoundingClientRect().top < window.innerHeight * 0.88) el.classList.add('visible');
                 });

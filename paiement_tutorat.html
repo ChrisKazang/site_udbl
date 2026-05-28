@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paiement Tutorat - UDBL</title>
+    <link rel="stylesheet" href="CSS/style.css">
+<base target="_blank">
+</head>
+<body class="theme-clair" style="background-color: #ffffff !important; color: #222222;">
+    <header>
+        <div class="titre_header">
+            <img src="images/UDBL.png" alt="logo UDBL">
+            <div>
+                <h2>UNIVERSITE DON BOSCO</h2>
+                <h2>LUBUMBASHI</h2>
+            </div>
+        </div>
+        <button class="menu-toggle" aria-label="Ouvrir le menu">☰</button>
+        <nav class="navBar">
+            <a href="index.html">Accueil</a>
+            <a href="programme.html">Programme</a>
+            <a href="service.html" class="active">Services</a>
+            <a href="vie_etudiant.html">Vie d'étudiant</a>
+            <a href="a_propos.html">À propos</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <section class="services-intro-header reveal" style="padding-top: 120px !important;">
+            <span class="title-badge-custom">Tutorat</span>
+            <h1 class="sousTitre-programme">Paiement Tutorat & Soutien</h1>
+            <p class="des-programme-custom">
+                Réglez les frais de participation aux programmes de tutorat personnalisé et de remise à niveau pour exceller dans vos études.
+            </p>
+        </section>
+
+        <section style="padding: 40px 20px; background: #ffffff;">
+            <div style="max-width: 1000px; margin: 0 auto;">
+                <h2 style="text-align: center; color: var(--bleu_primaire); font-size: clamp(20px, 2.5vw, 28px); margin-bottom: 40px;">Formules de Tutorat</h2>
+                <div class="grid-services-custom">
+                    <div class="card-service-custom reveal delay-1">
+                        <div class="icon-circle">👤</div>
+                        <h3>Tutorat Individuel</h3>
+                        <p style="font-size: 24px; font-weight: bold; color: var(--bleu_primaire); margin: 10px 0;">30 $ / mois</p>
+                        <p>4 séances d'1h30 par mois avec un tuteur dédié. Matière au choix.</p>
+                    </div>
+                    <div class="card-service-custom reveal delay-2">
+                        <div class="icon-circle">👥</div>
+                        <h3>Tutorat en Groupe</h3>
+                        <p style="font-size: 24px; font-weight: bold; color: var(--bleu_primaire); margin: 10px 0;">15 $ / mois</p>
+                        <p>4 séances collectives de 2h par mois. Groupe de 3 à 5 étudiants.</p>
+                    </div>
+                    <div class="card-service-custom reveal delay-3">
+                        <div class="icon-circle">📅</div>
+                        <h3>Session Intensive</h3>
+                        <p style="font-size: 24px; font-weight: bold; color: var(--bleu_primaire); margin: 10px 0;">50 $</p>
+                        <p>Pack de 10 séances intensives avant les examens. Toutes matières.</p>
+                    </div>
+                    <div class="card-service-custom reveal delay-4">
+                        <div class="icon-circle">🎯</div>
+                        <h3>Remise à Niveau</h3>
+                        <p style="font-size: 24px; font-weight: bold; color: var(--bleu_primaire); margin: 10px 0;">40 $</p>
+                        <p>Programme complet de rattrapage sur une matière clé du semestre.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="padding: 40px 20px; background: #f8fafc;">
+            <div class="container-contact-custom reveal" style="max-width: 800px; margin: 0 auto;">
+                <div class="form-wrapper-custom" style="width: 100%; max-width: 100%;">
+                    <h2>Payer ma Formule Tutorat</h2>
+                    <form action="#" method="POST">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                            <div class="form-group-custom">
+                                <label for="nom">Nom complet</label>
+                                <input type="text" id="nom" name="nom" required placeholder="Ex: Paul Ilunga">
+                            </div>
+                            <div class="form-group-custom">
+                                <label for="matricule">Matricule</label>
+                                <input type="text" id="matricule" name="matricule" required placeholder="Ex: UDBL-2024-012">
+                            </div>
+                        </div>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                            <div class="form-group-custom">
+                                <label for="faculte">Faculté</label>
+                                <input type="text" id="faculte" name="faculte" required placeholder="Ex: Sciences Informatiques">
+                            </div>
+                            <div class="form-group-custom">
+                                <label for="niveau">Niveau</label>
+                                <input type="text" id="niveau" name="niveau" required placeholder="Ex: L2">
+                            </div>
+                        </div>
+                        <div class="form-group-custom">
+                            <label for="formule">Formule choisie</label>
+                            <select id="formule" name="formule" style="width: 100%; padding: 14px; border: 1px solid #cbd5e1; border-radius: 12px; font-size: 14px; color: #333; background: white; outline: none;">
+                                <option>Tutorat Individuel - 30 $/mois</option>
+                                <option>Tutorat en Groupe - 15 $/mois</option>
+                                <option>Session Intensive - 50 $</option>
+                                <option>Remise à Niveau - 40 $</option>
+                            </select>
+                        </div>
+                        <div class="form-group-custom">
+                            <label for="matiere">Matière(s) concernée(s)</label>
+                            <input type="text" id="matiere" name="matiere" required placeholder="Ex: Programmation Java">
+                        </div>
+                        <div class="form-group-custom">
+                            <label for="mode_paiement">Mode de paiement</label>
+                            <select id="mode_paiement" name="mode_paiement" style="width: 100%; padding: 14px; border: 1px solid #cbd5e1; border-radius: 12px; font-size: 14px; color: #333; background: white; outline: none;">
+                                <option>Mobile Money</option>
+                                <option>Virement Bancaire</option>
+                                <option>Carte Bancaire</option>
+                                <option>Paiement Cash au Bureau du Tutorat</option>
+                            </select>
+                        </div>
+                        <div class="form-group-custom">
+                            <label for="telephone">Téléphone</label>
+                            <input type="tel" id="telephone" name="telephone" required placeholder="Ex: +243 812 345 678">
+                        </div>
+                        <button type="submit" class="btn-submit-custom">Confirmer et payer</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section style="padding: 40px 20px; background: #ffffff;">
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <div style="background: #e3f2fd; border-left: 4px solid var(--bleu_clair); padding: 20px; border-radius: 12px; text-align: left;">
+                    <h4 style="color: var(--bleu_primaire); margin-bottom: 10px;">💡 Bon à savoir</h4>
+                    <ul style="font-size: 13px; color: #555; line-height: 1.8; padding-left: 20px;">
+                        <li>Le paiement doit être effectué avant la première séance de tutorat.</li>
+                        <li>En cas d'absence non justifiée, la séance est considérée comme effectuée.</li>
+                        <li>Remboursement possible uniquement avant le début du premier cours.</li>
+                        <li>Contact : <strong>tutorat@udbl.edu</strong> ou <strong>+243 812 345 680</strong>.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Université Don Bosco</h3>
+                <p>Lubumbashi, RDC</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>contact@udbl.edu</p>
+            </div>
+            <div class="footer-section">
+                <h3>Suivez-nous</h3>
+                <p>Facebook | Twitter | Instagram</p>
+            </div>
+        </div>
+        <p class="copyright">© 2026 UDBL - Tous droits réservés</p>
+    </footer>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navBar = document.querySelector('.navBar');
+        if (menuToggle && navBar) {
+            menuToggle.addEventListener('click', () => { 
+                navBar.classList.toggle('active'); 
+            });
+        }
+
+        const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+        const checkVisibility = () => {
+            reveals.forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight * 0.88) {
+                    el.classList.add('visible');
+                }
+            });
+        };
+        window.addEventListener('scroll', checkVisibility);
+        checkVisibility();
+
+        const header = document.querySelector('header');
+        let lastScrollY = window.scrollY;
+        header.classList.add('scrolled-vrai');
+        header.style.transition = "transform 0.4s ease-in-out, background-color 0.3s ease";
+
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            if (currentScrollY > lastScrollY && currentScrollY > 50) {
+                header.style.transform = "translateY(-100%)";
+            } else {
+                header.style.transform = "translateY(0)";
+                header.classList.add('scrolled-vrai');
+            }
+            lastScrollY = currentScrollY;
+        });
+    });
+    </script>
+</body>
+</html>

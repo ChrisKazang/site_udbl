@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="CSS/style.css">
     <title>Vie d'étudiant - UDBL</title>
+<base target="_blank">
 </head>
 <body class="theme-clair">
     <header>
@@ -18,15 +19,16 @@
         <button class="menu-toggle" aria-label="Ouvrir le menu">☰</button>
         <nav class="navBar">
             <a href="index.html">Accueil</a>
-            <a href="a_propos.html">À propos</a>
             <a href="programme.html">Programme</a>
-            <a href="vie_etudiant.html" class="active">Vie d'étudiant</a>
             <a href="service.html">Services</a>
+            <a href="vie_etudiant.html" class="active">Vie d'étudiant</a>
+            <a href="a_propos.html">À propos</a>
             <a href="contact.html">Contact</a>
         </nav>
     </header>
 
     <main style="padding-top: 120px; background-color: #fdfdfd;">
+        <!-- HERO SECTION -->
         <div class="wrapper-campus-custom">
             <div class="container-options-custom reveal-left">
                 <p class="title-badge-custom">Épanouissement</p>
@@ -50,24 +52,25 @@
             </div>
         </div>
 
+        <!-- SECTION ACTIVITÉS PRINCIPALES -->
         <section style="max-width: 1200px; margin: 80px auto; padding: 20px; display: flex; flex-direction: column;">
             <h2 style="text-align: center; margin-bottom: 50px; color: #2c3e50;">Vivre à l'Université Don Bosco</h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px;">
-                <div class="card-activite" style="background: white; border-radius: 20px; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: all 0.4s ease; border-top: 6px solid #3498db;">
+                <div class="card-activite reveal delay-1" style="background: white; border-radius: 20px; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: all 0.4s ease; border-top: 6px solid #3498db;">
                     <div style="height: 180px; background: #e1f5fe; border-radius: 12px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center;">
                         <img src="images/placeholder_cafe.png" alt="Cafétéria" style="max-width: 80px;">
                     </div>
                     <h3>Cafétéria & Détente</h3>
                     <p style="color: #666;">Espace de convivialité pour se restaurer et échanger entre deux cours.</p>
                 </div>
-                <div class="card-activite" style="background: white; border-radius: 20px; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: all 0.4s ease; border-top: 6px solid #e67e22;">
+                <div class="card-activite reveal delay-2" style="background: white; border-radius: 20px; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: all 0.4s ease; border-top: 6px solid #e67e22;">
                     <div style="height: 180px; background: #fff3e0; border-radius: 12px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center;">
                         <img src="images/placeholder_conf.png" alt="Conférences" style="max-width: 80px;">
                     </div>
                     <h3>Conférences & Débats</h3>
                     <p style="color: #666;">Rencontres régulières avec des experts pour nourrir votre curiosité.</p>
                 </div>
-                <div class="card-activite" style="background: white; border-radius: 20px; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: all 0.4s ease; border-top: 6px solid #27ae60;">
+                <div class="card-activite reveal delay-3" style="background: white; border-radius: 20px; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: all 0.4s ease; border-top: 6px solid #27ae60;">
                     <div style="height: 180px; background: #e8f5e9; border-radius: 12px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center;">
                         <img src="images/placeholder_campus.png" alt="Campus" style="max-width: 80px;">
                     </div>
@@ -77,7 +80,193 @@
             </div>
         </section>
 
-        
+        <!-- SECTION SPORTS & CLUBS -->
+        <section style="padding: 60px 20px; background: #f8fafc;">
+            <div style="max-width: 1000px; margin: 0 auto;">
+                <p class="title-badge-custom reveal" style="display: block; text-align: center; margin: 0 auto 20px;">Activités</p>
+                <h2 style="text-align: center; color: var(--bleu_primaire); font-size: clamp(22px, 3vw, 32px); margin-bottom: 40px; font-weight: bold;">Sports, Clubs & Arts</h2>
+                <p style="text-align: center; color: #555; max-width: 700px; margin: 0 auto 50px; line-height: 1.6;">
+                    Développez vos talents et votre esprit d'équipe grâce à nos nombreuses associations étudiantes et activités sportives.
+                </p>
+
+                <div class="grid-services-custom">
+                    <div class="card-service-custom reveal delay-1">
+                        <div class="icon-circle">⚽</div>
+                        <h3>Football</h3>
+                        <p>Équipe masculine et féminine. Entraînements hebdomadaires et tournois inter-universitaires.</p>
+                    </div>
+                    <div class="card-service-custom reveal delay-2">
+                        <div class="icon-circle">🏀</div>
+                        <h3>Basketball</h3>
+                        <p>Club actif avec coach qualifié. Compétitions régionales et championnat universitaire.</p>
+                    </div>
+                    <div class="card-service-custom reveal delay-3">
+                        <div class="icon-circle">🎭</div>
+                        <h3>Théâtre & Danse</h3>
+                        <p>Troupe théâtrale et groupe de danse traditionnelle et contemporaine. Spectacles annuels.</p>
+                    </div>
+                    <div class="card-service-custom reveal delay-4">
+                        <div class="icon-circle">🎵</div>
+                        <h3>Chorale & Musique</h3>
+                        <p>Chorale universitaire, groupe de musique moderne et cours de instruments.</p>
+                    </div>
+                    <div class="card-service-custom reveal delay-5">
+                        <div class="icon-circle">📸</div>
+                        <h3>Club Photo & Vidéo</h3>
+                        <p>Ateliers de photographie, montage vidéo et couverture des événements du campus.</p>
+                    </div>
+                    <div class="card-service-custom reveal delay-6">
+                        <div class="icon-circle">💻</div>
+                        <h3>Club Tech & Coding</h3>
+                        <p>Hackathons, compétitions de programmation et projets open-source collaboratifs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION ÉVÉNEMENTS -->
+        <section style="padding: 60px 20px; background: #ffffff;">
+            <div style="max-width: 1000px; margin: 0 auto;">
+                <p class="title-badge-custom reveal" style="display: block; text-align: center; margin: 0 auto 20px;">Agenda</p>
+                <h2 style="text-align: center; color: var(--bleu_primaire); font-size: clamp(22px, 3vw, 32px); margin-bottom: 40px; font-weight: bold;">Événements & Manifestations</h2>
+
+                <div class="options-wrapper-custom" style="max-width: 800px; margin: 0 auto;">
+                    <div class="item-option-custom reveal delay-1" style="margin-bottom: 15px;">
+                        <div class="option-header-row">
+                            <h3>🎉 Journée d'Intégration des Nouveaux Étudiants</h3>
+                            <span class="duree-tag">Octobre</span>
+                        </div>
+                        <p>Cérémonie officielle de bienvenue, visite guidée du campus et activités de cohésion pour les L1.</p>
+                    </div>
+                    <div class="item-option-custom reveal delay-2" style="margin-bottom: 15px;">
+                        <div class="option-header-row">
+                            <h3>🏆 Tournoi Inter-Facultés</h3>
+                            <span class="duree-tag">Novembre</span>
+                        </div>
+                        <p>Compétitions sportives (football, basketball, volleyball) entre les 4 facultés de l'UDBL.</p>
+                    </div>
+                    <div class="item-option-custom reveal delay-3" style="margin-bottom: 15px;">
+                        <div class="option-header-row">
+                            <h3>🎭 Festival des Arts & Culture</h3>
+                            <span class="duree-tag">Février</span>
+                        </div>
+                        <p>Semaine dédiée aux arts : théâtre, danse, musique, poésie et exposition des talents étudiants.</p>
+                    </div>
+                    <div class="item-option-custom reveal delay-4" style="margin-bottom: 15px;">
+                        <div class="option-header-row">
+                            <h3>🎓 Cérémonie de Remise des Diplômes</h3>
+                            <span class="duree-tag">Juillet</span>
+                        </div>
+                        <p>Événement majeur de l'année. Célébration de la réussite des diplômés en présence des familles.</p>
+                    </div>
+                    <div class="item-option-custom reveal delay-5">
+                        <div class="option-header-row">
+                            <h3>🌍 Journée Salésienne de la Jeunesse</h3>
+                            <span class="duree-tag">Août</span>
+                        </div>
+                        <p>Célébration de l'esprit Don Bosco : messe, activités spirituelles et service communautaire.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION INFOS PRATIQUES -->
+        <section style="padding: 60px 20px; background: #f8fafc;">
+            <div style="max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <div class="reveal delay-1" style="background: white; padding: 30px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.04);">
+                    <div style="font-size: 40px; margin-bottom: 15px;">🏠</div>
+                    <h3 style="color: var(--bleu_primaire); margin-bottom: 12px; font-size: 20px;">Logement Étudiant</h3>
+                    <p style="color: #555; font-size: 13px; line-height: 1.7;">
+                        L'UDBL propose des chambres en résidence universitaire à proximité du campus. 
+                        Tarifs préférentiels pour les étudiants boursiers. Liste des logements partenaires disponible au service social.
+                    </p>
+                    <p style="margin-top: 12px; font-size: 12px; color: var(--bleu_clair); font-weight: 600;">
+                        → Contact : logement@udbl.edu
+                    </p>
+                </div>
+                <div class="reveal delay-2" style="background: white; padding: 30px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.04);">
+                    <div style="font-size: 40px; margin-bottom: 15px;">🍽️</div>
+                    <h3 style="color: var(--bleu_primaire); margin-bottom: 12px; font-size: 20px;">Restauration</h3>
+                    <p style="color: #555; font-size: 13px; line-height: 1.7;">
+                        Cafétéria sur le campus proposant des repas équilibrés à prix étudiants (2-4 $). 
+                        Menus variés : local, continental et options végétariennes. Service de 7h00 à 20h00.
+                    </p>
+                    <p style="margin-top: 12px; font-size: 12px; color: var(--bleu_clair); font-weight: 600;">
+                        → Horaires : 7h - 20h
+                    </p>
+                </div>
+                <div class="reveal delay-3" style="background: white; padding: 30px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.04);">
+                    <div style="font-size: 40px; margin-bottom: 15px;">🚌</div>
+                    <h3 style="color: var(--bleu_primaire); margin-bottom: 12px; font-size: 20px;">Transport</h3>
+                    <p style="color: #555; font-size: 13px; line-height: 1.7;">
+                        Navettes gratuites entre le campus et les arrêts stratégiques de Lubumbashi. 
+                        Lignes : Centre-Ville, Golf, Kenya, Ruashi. Horaires disponibles sur la page Services.
+                    </p>
+                    <p style="margin-top: 12px; font-size: 12px; color: var(--bleu_clair); font-weight: 600;">
+                        → Voir les horaires
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION TÉMOIGNAGES -->
+        <section style="padding: 60px 20px; background: #ffffff;">
+            <div style="max-width: 1000px; margin: 0 auto;">
+                <p class="title-badge-custom reveal" style="display: block; text-align: center; margin: 0 auto 20px;">Témoignages</p>
+                <h2 style="text-align: center; color: var(--bleu_primaire); font-size: clamp(22px, 3vw, 32px); margin-bottom: 40px; font-weight: bold;">Ils vivent l'expérience UDBL</h2>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
+                    <div class="reveal delay-1" style="background: #f8fafc; padding: 25px; border-radius: 20px; border-left: 4px solid var(--vert_primaire);">
+                        <p style="color: #555; font-size: 14px; line-height: 1.6; font-style: italic; margin-bottom: 15px;">
+                            "Les clubs et activités du campus m'ont permis de découvrir ma passion pour la photographie tout en poursuivant mes études en informatique."
+                        </p>
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <div style="width: 45px; height: 45px; background: var(--bleu_primaire); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">PK</div>
+                            <div>
+                                <p style="font-weight: bold; color: #333; font-size: 14px;">Patrick Kabongo</p>
+                                <p style="font-size: 12px; color: #888;">L3 - Sciences Informatiques</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reveal delay-2" style="background: #f8fafc; padding: 25px; border-radius: 20px; border-left: 4px solid var(--bleu_clair);">
+                        <p style="color: #555; font-size: 14px; line-height: 1.6; font-style: italic; margin-bottom: 15px;">
+                            "Le tutorat académique m'a sauvé en L1. Grâce aux tuteurs, j'ai réussi mon année et aujourd'hui je deviens moi-même tuteur pour aider les nouveaux."
+                        </p>
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <div style="width: 45px; height: 45px; background: var(--vert_primaire); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">SM</div>
+                            <div>
+                                <p style="font-weight: bold; color: #333; font-size: 14px;">Sarah Mukendi</p>
+                                <p style="font-size: 12px; color: #888;">L2 - Sciences de Gestion</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reveal delay-3" style="background: #f8fafc; padding: 25px; border-radius: 20px; border-left: 4px solid #e67e22;">
+                        <p style="color: #555; font-size: 14px; line-height: 1.6; font-style: italic; margin-bottom: 15px;">
+                            "La vie sur le campus est incroyable. Entre les conférences, le sport et les rencontres avec des professionnels, on ne s'ennuie jamais !"
+                        </p>
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <div style="width: 45px; height: 45px; background: #e67e22; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">JI</div>
+                            <div>
+                                <p style="font-weight: bold; color: #333; font-size: 14px;">Jean Ilunga</p>
+                                <p style="font-size: 12px; color: #888;">M1 - Philosophie</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA FINAL -->
+        <section style="padding: 80px 20px; background: linear-gradient(135deg, var(--bleu_primaire), var(--bleu_clair)); text-align: center;">
+            <div style="max-width: 700px; margin: 0 auto;">
+                <h2 style="color: white; font-size: clamp(24px, 4vw, 38px); margin-bottom: 15px; font-weight: bold;">Rejoignez la communauté UDBL</h2>
+                <p style="color: rgba(255,255,255,0.9); font-size: 16px; line-height: 1.6; margin-bottom: 30px;">
+                    Plus de 1800 étudiants vivent chaque jour une expérience campus unique. 
+                    Faites partie de l'aventure Don Bosco.
+                </p>
+                <a href="contact.html" style="display: inline-block; background: white; color: var(--bleu_primaire); padding: 14px 32px; border-radius: 30px; font-weight: bold; text-decoration: none; font-size: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: all 0.3s ease;">Nous contacter</a>
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -91,12 +280,10 @@
 
     <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // 1. GESTION DU MENU MOBILE
         const menuToggle = document.querySelector('.menu-toggle');
         const navBar = document.querySelector('.navBar');
         menuToggle?.addEventListener('click', () => navBar.classList.toggle('active'));
 
-        // 2. ANIMATIONS DE SCROLL (REVEAL)
         const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .img-mosaique-custom, .card-activite');
         const checkVisibility = () => {
             reveals.forEach(el => {
@@ -106,7 +293,6 @@
         window.addEventListener('scroll', checkVisibility);
         checkVisibility();
 
-        // 3. HEADER INTELLIGENT
         const header = document.querySelector('header');
         let lastScrollY = window.scrollY;
         header.classList.add('scrolled-vrai');

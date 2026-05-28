@@ -7,6 +7,7 @@
     <title>Contact - UDBL</title>
 </head>
 <body class="theme-page-contact">
+
     <header>
         <div class="titre_header">
             <img src="images/UDBL.png" alt="logo UDBL">
@@ -18,10 +19,10 @@
         <button class="menu-toggle" aria-label="Ouvrir le menu">☰</button>
         <nav class="navBar">
             <a href="index.html">Accueil</a>
-            <a href="a_propos.html">À propos</a>
             <a href="programme.html">Programme</a>
-            <a href="vie_etudiant.html">Vie d'étudiant</a>
             <a href="service.html">Services</a>
+            <a href="vie_etudiant.html">Vie d'étudiant</a>
+            <a href="a_propos.html">À propos</a>
             <a href="contact.html" class="active">Contact</a>
         </nav>
     </header>
@@ -101,20 +102,47 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // 1. GESTION DU MENU MOBILE
             const menuToggle = document.querySelector('.menu-toggle');
             const navBar = document.querySelector('.navBar');
             if (menuToggle && navBar) {
-                menuToggle.addEventListener('click', () => { navBar.classList.toggle('active'); });
+                menuToggle.addEventListener('click', () => { 
+                    navBar.classList.toggle('active'); 
+                });
             }
 
-            const reveals = document.querySelectorAll('.reveal');
+            // 2. ANIMATIONS DE SCROLL (REVEAL)
+            const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
             const checkVisibility = () => {
                 reveals.forEach(el => {
-                    if (el.getBoundingClientRect().top < window.innerHeight * 0.88) el.classList.add('visible');
+                    if (el.getBoundingClientRect().top < window.innerHeight * 0.88) {
+                        el.classList.add('visible');
+                    }
                 });
             };
             window.addEventListener('scroll', checkVisibility);
             checkVisibility();
+
+            // 3. COMPORTEMENT DU HEADER (Mode "À propos")
+            const header = document.querySelector('header');
+            let lastScrollY = window.scrollY;
+
+            // Force le fond bleu dès le chargement de la page contact
+            header.classList.add('scrolled-vrai');
+            header.style.transition = "transform 0.4s ease-in-out, background-color 0.3s ease";
+
+            window.addEventListener('scroll', () => {
+                const currentScrollY = window.scrollY;
+
+                // Masquage dynamique lors du scroll vers le bas, réapparition vers le haut
+                if (currentScrollY > lastScrollY && currentScrollY > 50) {
+                    header.style.transform = "translateY(-100%)";
+                } else {
+                    header.style.transform = "translateY(0)";
+                    header.classList.add('scrolled-vrai');
+                }
+                lastScrollY = currentScrollY;
+            });
         });
     </script>
 </body>

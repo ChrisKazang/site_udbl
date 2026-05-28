@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorat - UDBL</title>
+    <link rel="stylesheet" href="CSS/style.css">
+<base target="_blank">
+</head>
+<body class="theme-clair" style="background-color: #ffffff !important; color: #222222;">
+    <header>
+        <div class="titre_header">
+            <img src="images/UDBL.png" alt="logo UDBL">
+            <div>
+                <h2>UNIVERSITE DON BOSCO</h2>
+                <h2>LUBUMBASHI</h2>
+            </div>
+        </div>
+        <button class="menu-toggle" aria-label="Ouvrir le menu">☰</button>
+        <nav class="navBar">
+            <a href="index.html">Accueil</a>
+            <a href="programme.html">Programme</a>
+            <a href="service.html" class="active">Services</a>
+            <a href="vie_etudiant.html">Vie d'étudiant</a>
+            <a href="a_propos.html">À propos</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <section class="services-intro-header reveal" style="padding-top: 120px !important;">
+            <span class="title-badge-custom">Accompagnement</span>
+            <h1 class="sousTitre-programme">Tutorat & Soutien Académique</h1>
+            <p class="des-programme-custom">
+                Ne restez pas seul face aux difficultés. Nos tuteurs étudiants et enseignants vous accompagnent pour réussir votre année et maîtriser les matières clés de votre formation.
+            </p>
+        </section>
+
+        <section style="padding: 40px 20px; background: #ffffff;">
+            <div style="max-width: 1000px; margin: 0 auto;">
+                <h2 style="text-align: center; color: var(--bleu_primaire); font-size: clamp(20px, 2.5vw, 28px); margin-bottom: 40px;">Comment ça marche ?</h2>
+                <div class="grid-services-custom">
+                    <div class="card-service-custom reveal delay-1" style="padding: 25px;">
+                        <div class="icon-circle">1️⃣</div>
+                        <h3>Inscription</h3>
+                        <p>Remplissez le formulaire en ligne avec votre faculté et les matières concernées.</p>
+                    </div>
+                    <div class="card-service-custom reveal delay-2" style="padding: 25px;">
+                        <div class="icon-circle">2️⃣</div>
+                        <h3>Matching</h3>
+                        <p>Nous vous assignons un tuteur qualifié selon votre niveau et vos besoins spécifiques.</p>
+                    </div>
+                    <div class="card-service-custom reveal delay-3" style="padding: 25px;">
+                        <div class="icon-circle">3️⃣</div>
+                        <h3>Sessions</h3>
+                        <p>Rencontrez votre tuteur sur le campus ou en ligne selon un horaire convenu ensemble.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="padding: 50px 20px; background: #f8fafc;">
+            <div style="max-width: 1000px; margin: 0 auto;">
+                <h2 style="text-align: center; color: var(--bleu_primaire); font-size: clamp(20px, 2.5vw, 28px); margin-bottom: 40px;">Matières Couvertes</h2>
+                <div class="grid-services-custom">
+                    <div class="card-service-custom reveal delay-1">
+                        <div class="icon-circle">💻</div>
+                        <h3>Programmation</h3>
+                        <p>Java, Python, Web, Bases de données, Algorithmique et structures de données.</p>
+                    </div>
+                    <div class="card-service-custom reveal delay-2">
+                        <div class="icon-circle">📊</div>
+                        <h3>Mathématiques</h3>
+                        <p>Analyse, Algèbre linéaire, Probabilités, Statistiques et Recherche opérationnelle.</p>
+                    </div>
+                    <div class="card-service-custom reveal delay-3">
+                        <div class="icon-circle">📈</div>
+                        <h3>Gestion & Comptabilité</h3>
+                        <p>Comptabilité générale, Analyse financière, Marketing et Management stratégique.</p>
+                    </div>
+                    <div class="card-service-custom reveal delay-4">
+                        <div class="icon-circle">📖</div>
+                        <h3>Philosophie & Éthique</h3>
+                        <p>Métaphysique, Logique formelle, Éthique appliquée et Histoire de la philosophie.</p>
+                    </div>
+                    <div class="card-service-custom reveal delay-5">
+                        <div class="icon-circle">🌐</div>
+                        <h3>Langues & Communication</h3>
+                        <p>Anglais technique, Français académique, Rédaction de mémoires et présentations.</p>
+                    </div>
+                    <div class="card-service-custom reveal delay-6">
+                        <div class="icon-circle">🔬</div>
+                        <h3>Méthodologie</h3>
+                        <p>Méthodologie du mémoire, Recherche documentaire, Outils bureautiques avancés.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="padding: 60px 20px; background: #ffffff;">
+            <div class="container-contact-custom reveal" style="max-width: 800px; margin: 0 auto;">
+                <div class="form-wrapper-custom" style="width: 100%; max-width: 100%;">
+                    <h2>Demander un Tuteur</h2>
+                    <form action="#" method="POST">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                            <div class="form-group-custom">
+                                <label for="nom">Nom complet</label>
+                                <input type="text" id="nom" name="nom" required placeholder="Ex: Marie Kalala">
+                            </div>
+                            <div class="form-group-custom">
+                                <label for="email">Email universitaire</label>
+                                <input type="email" id="email" name="email" required placeholder="Ex: marie.k@udbl.edu">
+                            </div>
+                        </div>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                            <div class="form-group-custom">
+                                <label for="faculte">Faculté</label>
+                                <input type="text" id="faculte" name="faculte" required placeholder="Ex: Sciences Informatiques">
+                            </div>
+                            <div class="form-group-custom">
+                                <label for="niveau">Niveau (L1, L2, L3...)</label>
+                                <input type="text" id="niveau" name="niveau" required placeholder="Ex: L2">
+                            </div>
+                        </div>
+                        <div class="form-group-custom">
+                            <label for="matiere">Matière(s) concernée(s)</label>
+                            <input type="text" id="matiere" name="matiere" required placeholder="Ex: Programmation Java, Algèbre linéaire">
+                        </div>
+                        <div class="form-group-custom">
+                            <label for="message">Précisions sur vos besoins</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Décrivez vos difficultés et vos disponibilités..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit-custom">Envoyer ma demande</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Université Don Bosco</h3>
+                <p>Lubumbashi, RDC</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>contact@udbl.edu</p>
+            </div>
+            <div class="footer-section">
+                <h3>Suivez-nous</h3>
+                <p>Facebook | Twitter | Instagram</p>
+            </div>
+        </div>
+        <p class="copyright">© 2026 UDBL - Tous droits réservés</p>
+    </footer>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navBar = document.querySelector('.navBar');
+        if (menuToggle && navBar) {
+            menuToggle.addEventListener('click', () => { 
+                navBar.classList.toggle('active'); 
+            });
+        }
+
+        const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+        const checkVisibility = () => {
+            reveals.forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight * 0.88) {
+                    el.classList.add('visible');
+                }
+            });
+        };
+        window.addEventListener('scroll', checkVisibility);
+        checkVisibility();
+
+        const header = document.querySelector('header');
+        let lastScrollY = window.scrollY;
+        header.classList.add('scrolled-vrai');
+        header.style.transition = "transform 0.4s ease-in-out, background-color 0.3s ease";
+
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            if (currentScrollY > lastScrollY && currentScrollY > 50) {
+                header.style.transform = "translateY(-100%)";
+            } else {
+                header.style.transform = "translateY(0)";
+                header.classList.add('scrolled-vrai');
+            }
+            lastScrollY = currentScrollY;
+        });
+    });
+    </script>
+</body>
+</html>
