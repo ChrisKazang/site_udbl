@@ -204,9 +204,9 @@ section {
     min-height: 80vh; /* Réduit légèrement de 85vh à 80vh pour un meilleur rendu */
     background: linear-gradient(
         90deg,
-        rgba(11, 11, 78, 0.836),
+        rgba(11, 11, 78, 0.623),
         rgba(11, 11, 78, 0.61),
-        rgba(11, 11, 78, 0.2)
+        rgba(11, 11, 78, 0.089)
     ), url('images/1.png');
     background-size: cover;
     background-position: center;
