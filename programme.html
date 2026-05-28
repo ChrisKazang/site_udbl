@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/style.css">
+    <title>Programme - UDBL</title>
+</head>
+<body class="theme-page-programme">
+    
+    <!-- CONTENEUR FLINDÉ ET FORCÉ EN HORIZONTAL (CÔTE À CÔTE) -->
+    <div style="position: fixed; bottom: 30px; right: 30px; display: flex !important; flex-direction: row !important; gap: 15px !important; z-index: 99999 !important;">
+        <!-- Bouton Bus Scolaire -->
+        <a href="service.html#transport" class="btn-flottant-custom btn-transport-scolaire" title="Programme du Bus Scolaire" style="position: static !important; margin: 0 !important;">
+            🚌 Bus Scolaire
+        </a>
+        <!-- Bouton Horaires -->
+        <a href="#section-horaires-facultes" class="btn-flottant-custom btn-raccourci-horaire" title="Aller aux horaires" style="position: static !important; margin: 0 !important;">
+            🕒 Horaires
+        </a>
+    </div>
+
+    <!-- Header complet avec classes d'animation -->
+    <header>
+        <div class="titre_header">
+            <img src="images/UDBL.png" alt="logo UDBL">
+            <div>
+                <h2>UNIVERSITE DON BOSCO</h2>
+                <h2>LUBUMBASHI</h2>
+            </div>
+        </div>
+        <button class="menu-toggle" aria-label="Ouvrir le menu">☰</button>
+        <nav class="navBar">
+            <a href="index.html">Accueil</a>
+            <a href="a_propos.html">À propos</a>
+            <a href="programme.html" class="active">Programme</a>
+            <a href="vie_etudiant.html">Vie d'étudiant</a>
+            <a href="service.html">Services</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- En-tête de présentation du programme (Animation au chargement) -->
+        <div class="programme-intro-header" style="padding-top: 140px !important;">
+            <p class="title-badge-custom reveal">Nos Formations</p>
+            <h1 class="sousTitre-programme reveal delay-1">Programmes d'Études</h1>
+            <p class="des-programme-custom reveal delay-2">
+                Découvrez des parcours académiques d'excellence calqués sur le système LMD, conçus pour répondre aux exigences du monde professionnel moderne.
+            </p>
+        </div>
+
+        <!-- SECTION DES HORAIRES CORRIGÉE (FOND BLANC + GRILLE 2x2) -->
+        <section id="section-horaires-facultes" class="reveal" style="padding: 60px 20px; background: #ffffff;">
+            <div style="width: 100%; max-width: 1100px; margin: 0 auto;">
+                <div style="text-align: center; margin-bottom: 40px;">
+                    <h2 style="color: var(--bleu_primaire); font-size: 28px; font-weight: 700; margin-bottom: 10px;">Horaires des Cours par Faculté</h2>
+                    <p style="color: #666666; font-size: 15px; max-width: 700px; margin: 0 auto;">
+                        Sélectionnez votre faculté pour consulter directement l'ensemble des horaires de toutes les promotions en cours.
+                    </p>
+                </div>
+                
+                <!-- Grille en 2x2 -->
+                <div class="grille-horaires-2x2">
+                    <!-- Bloc 1 : Informatique -->
+                    <a href="horaires_informatique.html" class="carte-horaire-blanche reveal delay-1">
+                        <div class="icone-faculte-h">💻</div>
+                        <div class="carte-h-texte">
+                            <h3>Faculté des Sciences Informatiques</h3>
+                            <p>Consulter le planning général : L1, L2, L3 (Toutes options incluses)</p>
+                            <span class="link-voir-planning">Voir l'horaire de la faculté →</span>
+                        </div>
+                    </a>
+
+                    <!-- Bloc 2 : Sciences de Gestion -->
+                    <a href="horaires_gestion.html" class="carte-horaire-blanche reveal delay-2">
+                        <div class="icone-faculte-h">📊</div>
+                        <div class="carte-h-texte">
+                            <h3>Faculté des Sciences de Gestion</h3>
+                            <p>Consulter le planning général : L1, L2, L3 (Gestion & Marketing)</p>
+                            <span class="link-voir-planning">Voir l'horaire de la faculté →</span>
+                        </div>
+                    </a>
+
+                    <!-- Bloc 3 : Philosophie -->
+                    <a href="horaires_philosophie.html" class="carte-horaire-blanche reveal delay-1">
+                        <div class="icone-faculte-h">🏛️</div>
+                        <div class="carte-h-texte">
+                            <h3>Sciences de l'Homme / Philosophie</h3>
+                            <p>Consulter le planning général de toutes les promotions de Philosophie</p>
+                            <span class="link-voir-planning">Voir l'horaire de la faculté →</span>
+                        </div>
+                    </a>
+
+                    <!-- Bloc 4 : Théologie -->
+                    <a href="horaires_theologie.html" class="carte-horaire-blanche reveal delay-2">
+                        <div class="icone-faculte-h">📜</div>
+                        <div class="carte-h-texte">
+                            <h3>Faculté de Théologie</h3>
+                            <p>Consulter le planning général de toutes les promotions de Théologie</p>
+                            <span class="link-voir-planning">Voir l'horaire de la faculté →</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+            
+        <!-- FACULTÉ : INFORMATIQUE -->
+        <div class="block-faculte-custom" style="margin-top: 40px;">
+            <div class="container-options-custom reveal-left">
+                <div class="faculte-badge-header">
+                    <span class="badge-filiere-tech">Sciences Appliquées</span>
+                </div>
+                <h2 class="faculte-titre-custom">Science Informatique</h2>
+                
+                <div class="options-wrapper-custom">
+                    <div class="item-option-custom reveal delay-1" data-id="GL">
+                        <div class="option-header-row">
+                            <h3>Génie logiciel</h3>
+                            <span class="duree-tag">3 ans</span>
+                        </div>
+                        <p>Conception, développement et maintenance des logiciels de pointe.</p>
+                        <div class="metiers-tags">
+                            <span>Dev Fullstack</span>
+                            <span>DevOps</span>
+                            <span>Mobile Dev</span>
+                        </div>
+                    </div>
+                    
+                    <div class="item-option-custom reveal delay-2" data-id="MSI">
+                        <div class="option-header-row">
+                            <h3>Management des systèmes informatiques</h3>
+                            <span class="duree-tag">3 ans</span>
+                        </div>
+                        <p>Administration, gouvernance et supervision des infrastructures SI complexes.</p>
+                        <div class="metiers-tags">
+                            <span>Chef de Projet IT</span>
+                            <span>Auditeur SI</span>
+                            <span>Consultant</span>
+                        </div>
+                    </div>
+                    
+                    <div class="item-option-custom reveal delay-3" data-id="ART">
+                        <div class="option-header-row">
+                            <h3>Administration Réseaux & Télécommunication</h3>
+                            <span class="duree-tag">3 ans</span>
+                        </div>
+                        <p>Conception, déploiement et sécurisation des infrastructures de réseaux.</p>
+                        <div class="metiers-tags">
+                            <span>Admin Réseau</span>
+                            <span>Expert Sécurité</span>
+                            <span>Ingénieur Cisco</span>
+                        </div>
+                    </div>
+                    
+                    <div class="item-option-custom reveal delay-4" data-id="DM">
+                        <div class="option-header-row">
+                            <h3>Design & Multimédia</h3>
+                            <span class="duree-tag">3 ans</span>
+                        </div>
+                        <p>Conception d'interfaces utilisateurs intuitives (UI) et expérience utilisateur (UX).</p>
+                        <div class="metiers-tags">
+                            <span>UI/UX Designer</span>
+                            <span>Infographiste</span>
+                            <span>Modélisateur 3D</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="certification-academy-box reveal delay-4">
+                    <div class="cert-icon">🔒</div>
+                    <div class="cert-text">
+                        <h4>Cursus certifiant Cisco Networking Academy</h4>
+                        <p>Les étudiants de la filière Informatique et Réseaux préparent activement les certifications officielles Cisco.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="image-faculte-wrapper reveal-right floating-effect">
+                <img src="images/etudiant_info.png" alt="Étudiant Informatique">
+            </div>
+        </div>
+
+        <!-- FACULTÉ : GESTION -->
+        <div class="block-faculte-custom layout-reverse">
+            <div class="container-options-custom reveal-right">
+                <div class="faculte-badge-header">
+                    <span class="badge-filiere-tech" style="background: rgba(0, 128, 0, 0.08); color: green;">Économie & Entreprise</span>
+                </div>
+                <h2 class="faculte-titre-custom">Sciences de Gestion</h2>
+                
+                <div class="options-wrapper-custom">
+                    <div class="item-option-custom reveal delay-1" data-id="GE">
+                        <div class="option-header-row">
+                            <h3>Gestion des entreprises</h3>
+                            <span class="duree-tag">3 ans</span>
+                        </div>
+                        <p>Organisation, management stratégique et pilotage des activités corporatives.</p>
+                        <div class="metiers-tags">
+                            <span>Manager</span>
+                            <span>Analyste Financier</span>
+                            <span>Auditeur</span>
+                        </div>
+                    </div>
+                    
+                    <div class="item-option-custom reveal delay-2" data-id="MC">
+                        <div class="option-header-row">
+                            <h3>Marketing commercial</h3>
+                            <span class="duree-tag">3 ans</span>
+                        </div>
+                        <p>Analyse de marchés, stratégies de distribution et relation client moderne.</p>
+                        <div class="metiers-tags">
+                            <span>Responsable Marketing</span>
+                            <span>Chef de Produit</span>
+                            <span>SMM Specialist</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="image-faculte-wrapper reveal-left floating-effect">
+                <img src="images/etudiante_gestion.png" alt="Étudiante Gestion">
+            </div>
+        </div>
+
+        <!-- FACULTÉS SECONDAIRES -->
+        <div class="grid-valeurs-custom" style="margin-top: 50px; margin-bottom: 50px;">
+            <div class="card-valeur-custom reveal delay-1" data-number="A">
+                <p class="title-badge-custom" style="margin-bottom: 12px; font-size: 11px; padding: 4px 12px; width: fit-content;">Faculté</p>
+                <h3>Sciences de l'Homme / Philosophie</h3>
+                <p style="color: #555555; font-size: 13px; margin-top: 8px; line-height: 1.4;">
+                    Réflexion critique, analyse philosophique profonde de l'existence, de l'éthique et de la société.
+                </p>
+            </div>
+            <div class="card-valeur-custom reveal delay-2" data-number="B">
+                <div class="title-badge-custom" style="margin-bottom: 12px; font-size: 11px; padding: 4px 12px; width: fit-content;">Faculté</div>
+                <h3>Théologie</h3>
+                <p style="color: #555555; font-size: 13px; margin-top: 8px; line-height: 1.4;">
+                    Étude approfondie des textes, des doctrines spirituelles et repères théologiques contemporains.
+                </p>
+            </div>
+        </div>
+
+        <!-- SECTION INSCRIPTION ET DOSSIER -->
+        <section class="section-admission-programme reveal">
+            <div class="admission-content-box">
+                <div class="badge-admission">Inscriptions Ouvertes</div>
+                <h2>Conditions d'Admission & Inscription</h2>
+                <p>Constituez votre dossier pour rejoindre l'excellence Don Bosco au cours de l'année académique.</p>
+                
+                <div class="dossier-grid">
+                    <div class="dossier-list-box">
+                        <h3>📁 Documents requis (Système LMD)</h3>
+                        <ul>
+                            <li>Copie certifiée du Diplôme d'État (ou Journal de résultats).</li>
+                            <li>Bulletins de la 5ème et 6ème Années des Humanités.</li>
+                            <li>Extrait d'acte de naissance récent.</li>
+                            <li>4 photos passeport récentes sur fond blanc.</li>
+                        </ul>
+                    </div>
+                    <div class="processus-box">
+                        <h3>🚀 Processus d'admission</h3>
+                        <div class="steps-admission">
+                            <div class="step-item"><span class="step-num">1</span> <p>Dépôt et vérification de la conformité du dossier au secrétariat.</p></div>
+                            <div class="step-item"><span class="step-num">2</span> <p>Test d'aptitude informatique ou entretien selon la filière.</p></div>
+                            <div class="step-item"><span class="step-num">3</span> <p>Validation de l'inscription et délivrance de la carte d'étudiant.</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Université Don Bosco</h3>
+                <p>Lubumbashi, RDC</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>contact@udbl.edu</p>
+            </div>
+            <div class="footer-section">
+                <h3>Suivez-nous</h3>
+                <p>Facebook | Twitter | Instagram</p>
+            </div>
+        </div>
+        <p class="copyright">© 2026 UDBL - Tous droits réservés</p>
+    </footer>
+
+    <!-- SCRIPT ANIMATIONS + HEADER INTELLIGENT -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navBar = document.querySelector('.navBar');
+            if (menuToggle && navBar) {
+                menuToggle.addEventListener('click', () => { navBar.classList.toggle('active'); });
+            }
+
+            const elements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+            const checkVisibility = () => {
+                elements.forEach(el => {
+                    if (el.getBoundingClientRect().top < window.innerHeight * 0.88) {
+                        el.classList.add('visible');
+                    }
+                });
+            };
+            window.addEventListener('scroll', checkVisibility);
+            checkVisibility();
+
+            const header = document.querySelector('header');
+            let lastScrollY = window.scrollY;
+            header.classList.add('scrolled-vrai');
+            header.style.transition = "transform 0.4s ease-in-out, background-color 0.3s ease";
+
+            window.addEventListener('scroll', () => {
+                const currentScrollY = window.scrollY;
+                if (currentScrollY > lastScrollY && currentScrollY > 60) {
+                    header.style.transform = "translateY(-100%)";
+                } else {
+                    header.style.transform = "translateY(0)";
+                    header.classList.add('scrolled-vrai');
+                }
+                lastScrollY = currentScrollY;
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/style.css">
+    <title>À propos - UDBL</title>
+</head>
+<body class="theme-clair">
+    <header>
+        <div class="titre_header">
+            <img src="images/UDBL.png" alt="logo UDBL">
+            <div>
+                <h2>UNIVERSITE DON BOSCO</h2>
+                <h2>LUBUMBASHI</h2>
+            </div>
+        </div>
+        <button class="menu-toggle" aria-label="Ouvrir le menu">☰</button>
+        <nav class="navBar">
+            <a href="index.html">Accueil</a>
+            <a href="a_propos.html" class="active">À propos</a>
+            <a href="programme.html">Programme</a>
+            <a href="vie_etudiant.html">Vie d'étudiant</a>
+            <a href="service.html">Services</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section-apropos-custom" style="padding-top: 120px !important;">
+            <p class="title-badge-custom reveal">À propos de nous</p>
+            <h2 id="sousTitre_Apropos" class="reveal delay-1">Notre Histoire</h2>
+            <p id="description_apropos" class="reveal delay-2">
+                L'Université Don Bosco de Lubumbashi est un établissement d'enseignement supérieur et universitaire privé catholique des salésiens de Don Bosco de la province Maria Assunta de l'Afrique Centrale; née de la fusion des instituts et écoles supérieurs :
+            </p>
+            
+            <div class="grid-ecoles-fusion">
+                <div class="card-ecole-custom reveal delay-1">
+                    <img src="images/logo_salama.png" alt="Logo École Salama">
+                    <p>École Supérieure d'Informatique Salama</p>
+                </div>
+                <div class="card-ecole-custom reveal delay-2">
+                    <img src="images/logo_ecopo.png" alt="Logo EcoPo">
+                    <p>École Supérieure de Gouvernance Politique et Économique</p>
+                </div>
+                <div class="card-ecole-custom reveal delay-3">
+                    <img src="images/logo_academic.png" alt="Logo Academic">
+                    <p>Institut Supérieur de Philosophie Saint Jean Bosco</p>
+                </div>
+                <div class="card-ecole-custom reveal delay-4">
+                    <img src="images/logo_theologie.png" alt="Logo Théologie">
+                    <p>Institut de Théologie Saint François de Sales</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="bar_section2 reveal">
+            <div>
+                <h2>Notre Vision</h2>
+                <p>La vision de l'UDBL est de répondre aux enjeux de société, tant en formation qu'en recherche, par la mise en commun des compétences de haut niveau et le rayonnement de l'excellence qu'elle propose.</p>
+            </div>
+        </div>
+
+        <section class="section-apropos-custom">
+            <p class="title-badge-custom reveal">Nos Valeurs</p>
+            <h2 id="sousTitre_Apropos" class="reveal delay-1" style="font-size: clamp(20px, 3vw, 35px);">Solidarité – Innovation – Travail</h2>
+            <p id="description_apropos" class="reveal delay-2" style="margin-bottom: 30px;">Cette devise incarne les 3 valeurs essentielles de l'Université qui sont :</p>
+            
+            <div class="grid-valeurs-custom">
+                <div class="card-valeur-custom reveal delay-1">
+                    <h3>Solidarité</h3>
+                    <p>Elle implique la responsabilité et la dépendance réciproque entre les scientifiques au sein de l'université comme une seule famille salésienne.</p>
+                </div>
+                <div class="card-valeur-custom reveal delay-2">
+                    <h3>Innovation</h3>
+                    <p>Elle est la recherche constante d'améliorations ou encore la veille technologique pour façonner un monde meilleur.</p>
+                </div>
+                <div class="card-valeur-custom reveal delay-3">
+                    <h3>Travail</h3>
+                    <p>C'est par l'effort continu et inlassable que l'on grandit scientifiquement et humainement et que l'on peut produire de meilleurs résultats.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="bar_section1 bar-resume reveal">
+            <p>En Résumé</p>
+            <img src="images/21.png" alt="">
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Université Don Bosco</h3>
+                <p>Lubumbashi, RDC</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>contact@udbl.edu</p>
+            </div>
+            <div class="footer-section">
+                <h3>Suivez-nous</h3>
+                <p>Facebook | Twitter | Instagram</p>
+            </div>
+        </div>
+        <p class="copyright">© 2026 UDBL - Tous droits réservés</p>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // 1. GESTION DU MENU MOBILE
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navBar = document.querySelector('.navBar');
+        if (menuToggle && navBar) {
+            menuToggle.addEventListener('click', () => { 
+                navBar.classList.toggle('active'); 
+            });
+        }
+
+        // 2. ANIMATIONS DE SCROLL (REVEAL)
+        const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+        const checkVisibility = () => {
+            reveals.forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight * 0.88) {
+                    el.classList.add('visible');
+                }
+            });
+        };
+        window.addEventListener('scroll', checkVisibility);
+        checkVisibility();
+
+        // 3. COMPORTEMENT INTELLIGENT DU HEADER POUR LES PAGES SECONDAIRES
+        const header = document.querySelector('header');
+        let lastScrollY = window.scrollY;
+
+        // Force le fond BLEU PRIMAIRE dès le départ
+        header.classList.add('scrolled-vrai');
+        header.style.transition = "transform 0.4s ease-in-out, background-color 0.3s ease";
+
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+
+            if (currentScrollY > lastScrollY && currentScrollY > 50) {
+                header.style.transform = "translateY(-100%)"; // Cache le header en scrollant vers le bas
+            } else {
+                header.style.transform = "translateY(0)"; // Réaffiche le header en scrollant vers le haut
+                header.classList.add('scrolled-vrai');
+            }
+            lastScrollY = currentScrollY;
+        });
+    });
+    </script>
+</body>
+</html>

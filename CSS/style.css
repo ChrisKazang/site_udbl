@@ -1,0 +1,2213 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+:root {
+    --bleu_primaire: rgb(0,26,102);
+    --vert_primaire: green;
+    --bleu_clair: rgb(7, 7, 182);
+    --gris_primaire: rgba(213, 213, 213, 0.767);
+    --gris_sombre: rgba(149, 149, 149, 0.767);
+    --bleu_tres_clair: rgba(3, 3, 157, 0.1);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+    background-color: var(--bleu_primaire);
+    color: #222222;
+    padding-top: 0; /* CORRECTION : Supprime l'espace vide parasite sous le header */
+}
+
+/* ========== HEADER INTELLIGENT (SMART HEADER) ========== */
+header {
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 40px;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    /* ÉTAT INITIAL : Transparent au sommet de la page d'accueil */
+    background: transparent;
+    box-shadow: none;
+    
+    /* Transition fluide pour la disparition/apparition et le changement de couleur */
+    transition: transform 0.4s ease-in-out, background-color 0.3s ease;
+}
+
+/* 1. CLASSE QUAND ON SCROLLE VERS LE BAS : Le header se cache en glissant vers le haut */
+header.hidden {
+    transform: translateY(-100%);
+}
+
+/* 2. CLASSE QUAND ON REMONTE : Le header réapparaît avec ton bleu solide (Pas de flou/glassmorphism) */
+header.scrolled-vrai {
+    background-color: var(--bleu_primaire) !important;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25) !important;
+    backdrop-filter: none !important;        /* C'est "glace mon fils" mais désactivé ici */
+    -webkit-backdrop-filter: none !important; /* Pas de flou du tout */
+}
+
+/* ZONE DE SÉCURITÉ : Permet de faire réapparaître le header si la souris survole le haut de l'écran */
+.header-hover-zone {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 15px; /* Zone invisible de 15px tout en haut */
+    z-index: 999; /* Juste en dessous du header */
+}
+
+header h2 {
+    color: white;
+    font-size: clamp(12px, 1.3vw, 22px);
+    padding-left: 5px;
+    padding-right: 5px;
+    line-height: 1.2;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.titre_header {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+}
+
+.titre_header img {
+    width: 42px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+header.scrolled-vrai .titre_header img {
+    width: 38px; /* Le logo rétrécit subtilement quand il a son fond bleu */
+}
+
+.titre_header div {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ========== NAVIGATION ========== */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: 1px solid var(--gris_sombre);
+    color: white;
+    font-size: 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 4px 8px;
+}
+
+.navBar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espacement plus compact */
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.nav-indicator {
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    height: 4px;
+    width: 0;
+    background-color: var(--vert_primaire);
+    border-radius: 4px;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    pointer-events: none;
+    z-index: 10;
+}
+
+.navBar a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    font-size: 15px;
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.navBar a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bleu_clair);
+    border-radius: 8px;
+    z-index: -1;
+    opacity: 0;
+    transform: scaleX(0.8) translateX(-10px);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
+}
+
+.navBar a:hover::before {
+    opacity: 1;
+    transform: scaleX(1) translateX(0);
+    background-color: rgba(0, 0, 0, 0.226);
+}
+
+.navBar a:hover {
+    transform: translateY(-2px);
+}
+
+.navBar a.active::before {
+    opacity: 1;
+    transform: scaleX(1) translateX(0);
+}
+
+@keyframes slideInRectangle {
+    from {
+        opacity: 0;
+        transform: scaleX(0.5) translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: scaleX(1) translateX(0);
+    }
+}
+
+.navBar a.active::before {
+    animation: slideInRectangle 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* ========== SECTIONS GÉNÉRALES ========== */
+section {
+    padding: clamp(10px, 4vw, 40px) clamp(20px, 4vw, 40px);
+    width: 100%;
+}
+
+/* ========== PRÉSENTATION (HERO SECTION) ========== */
+.presentation {
+    display: flex;
+    min-height: 80vh; /* Réduit légèrement de 85vh à 80vh pour un meilleur rendu */
+    background: linear-gradient(
+        90deg,
+        rgba(11, 11, 78, 0.836),
+        rgba(11, 11, 78, 0.61),
+        rgba(11, 11, 78, 0.2)
+    ), url('images/1.png');
+    background-size: cover;
+    background-position: center;
+    justify-content: space-between;
+    overflow: hidden;
+    align-items: center;
+    
+    /* AJUSTEMENT : Donne de l'air par rapport au header transparent sans écraser le contenu */
+    padding-top: 65px !important; 
+    padding-bottom: 40px !important;
+    position: relative;
+}
+
+.part1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 0px;
+    z-index: 5;
+}
+
+.p1 {
+    flex: 1;
+    min-width: 300px;
+    max-width: 550px;
+    animation: fadeInUp 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.p1 h2 {
+    margin-bottom: 12px;
+}
+
+.UNIVERSITE {
+    width: fit-content;
+    color: var(--vert_primaire);
+    font-size: clamp(24px, 3.5vw, 80px);
+    background-color: white;
+    box-shadow: 0px 8px 25px rgba(0,0,0,0.15);
+    padding: 8px 16px;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+.DON {
+    width: fit-content;
+    color: white;
+    white-space: nowrap;
+    font-size: clamp(38px, 8vw, 100px);
+    background-color: var(--vert_primaire);
+    padding: 12px 18px;
+    border-radius: 12px;
+    box-shadow: 0px 8px 25px rgba(0,0,0,0.2);
+    margin-top: 5px;
+}
+
+.LUSHI {
+    width: fit-content;
+    color: white;
+    font-size: clamp(20px, 4vw, 65px);
+    background-color: var(--bleu_clair);
+    padding: 8px 16px;
+    border-radius: 12px;
+    box-shadow: 0px 8px 25px rgba(0,0,0,0.2);
+    margin-top: 5px;
+}
+
+.p1 p {
+    color: white;
+    font-size: clamp(14px, 1.3vw, 16px);
+    line-height: 1.6;
+    margin-top: 15px;
+    text-shadow: 0px 2px 4px rgba(0,0,0,0.3);
+}
+
+.present {
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.faire {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.faire img {
+    width: clamp(160px, 18vw, 220px);
+    height: auto;
+    filter: drop-shadow(0px 8px 15px rgba(0,0,0,0.2));
+    transition: transform 0.3s ease;
+}
+
+.faire img:hover {
+    transform: scale(1.05);
+}
+
+.faire button {
+    padding: 12px 26px;
+    height: auto;
+    color: white;
+    font-size: clamp(14px, 1.3vw, 16px);
+    background-color: var(--bleu_primaire);
+    border-radius: 30px; /* Plus arrondi pour correspondre aux UI modernes */
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    white-space: nowrap;
+    font-weight: bold;
+}
+
+.faire button:hover {
+    background-color: var(--vert_primaire);
+    transform: translateY(-3px);
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.3);
+}
+
+.p2 {
+    position: relative;
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeInRight 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.p2 img {
+    width: clamp(200px, 23vw, 350px);
+    position: relative;
+    z-index: 3;
+    height: auto;
+    filter: drop-shadow(0px 10px 20px rgba(0,0,0,0.15));
+}
+
+.p2::before {
+    content: '';
+    position: absolute;
+    right: -102%;
+    top: 10%;
+    height: 85%;
+    width: clamp(600px, 22vw, 1950px);
+    background-color: var(--vert_primaire);
+    border-radius: 40px;
+    transform: rotate(45deg);
+    z-index: 2;
+    box-shadow: -5px 5px 20px rgba(0,0,0,0.1);
+}
+
+.p2::after {
+    content: '';
+    z-index: 1;
+    position: absolute;
+    background-color: #f4f6f9;
+    height: 100%;
+    width: clamp(600px, 22vw, 850px);
+    right: -100%;
+    top: 11%;
+    border-radius: 40px;
+    transform: rotate(45deg);
+}
+
+/* ========== BARRES DE SECTION ========== */
+.bar_section1 {
+    width: 100%;
+    background-color: var(--vert_primaire);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0px 4px 10px rgba(0,0,0,0.15);
+}
+
+.bar_section1 p{
+    padding: 20px 20px;
+    font-size: clamp(25px, 1.3vw, 16px);
+    color: white;
+    font-weight: bold;
+}
+
+.bar_section1 img{
+    padding: 30px;
+    width: clamp(200px, 22vw, 270px);
+}
+
+.bar_section2 {
+    background-color: #ffffff;
+    border-top: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+    width: 100%;
+    padding: clamp(30px, 4vw, 50px) 20px !important;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    color: #222222;
+    text-align: center;
+    gap: 15px;
+}
+
+.bar_section2 div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 700px;
+}
+
+.bar_section2 h2 {
+    margin-bottom: 12px;
+    color: var(--bleu_primaire);
+    font-size: clamp(20px, 2.5vw, 28px);
+}
+
+.bar_section2 p {
+    color: #555555;
+    font-size: clamp(14px, 1.3vw, 16px);
+    text-align: center;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.bar_section2 button {
+    border: none;
+    padding: 12px 26px;
+    border-radius: 30px;
+    background-color: var(--bleu_primaire);
+    color: white;
+    font-size: clamp(14px, 1.3vw, 16px);
+    cursor: pointer;
+    box-shadow: 0px 4px 10px rgba(0,26,102,0.2);
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.bar_section2 button:hover {
+    background-color: var(--vert_primaire);
+    transform: translateY(-2px);
+    box-shadow: 0px 6px 15px rgba(0,0,0,0.2);
+}
+
+/* ========== SECTION À PROPOS ========== */
+.apropos {
+    min-height: auto;
+    padding: clamp(40px, 5vw, 70px) clamp(20px, 4vw, 50px) !important;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+#titre_Apropos {
+    color: var(--bleu_primaire);
+    font-size: clamp(13px, 1.4vw, 16px);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background-color: rgba(0, 26, 102, 0.06);
+    padding: 8px 22px;
+    border-radius: 50px;
+    margin-bottom: 25px;
+    display: inline-block;
+}
+
+#sousTitre_Apropos {
+    color: #111111;
+    font-size: clamp(24px, 3.2vw, 38px);
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+#description_apropos {
+    color: #555555;
+    font-size: clamp(14px, 1.4vw, 16px);
+    text-align: center;
+    margin-bottom: 40px;
+    max-width: 750px;
+    line-height: 1.6;
+}
+
+.apropos_ecole {
+    display: flex;
+    justify-content: center;
+    gap: 25px; /* Espacement moderne */
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.apropos_ecole div {
+    width: clamp(200px, 18vw, 240px);
+    min-height: 200px;
+    padding: 25px 20px;
+    background-color: #ffffff;
+    border: 1px solid #edf2f7;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.05); /* Ombre douce style Figma */
+    border-radius: 24px; /* Plus grand arrondi */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.apropos_ecole img {
+    width: clamp(55px, 6vw, 75px);
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.4s ease;
+}
+
+.apropos_ecole div p {
+    font-size: clamp(13px, 1.2vw, 14px);
+    color: #333333;
+    text-align: center;
+    padding-top: 15px;
+    line-height: 1.4;
+    font-weight: 500;
+}
+
+/* Effet Hover Inspiré UI Premium */
+.apropos_ecole div:hover {
+    box-shadow: 0px 15px 35px rgba(0, 26, 102, 0.15);
+    transform: translateY(-8px) scale(1.02);
+    border-color: rgba(0, 26, 102, 0.1);
+    background: linear-gradient(
+        rgba(255, 255, 255, 0.85),
+        rgba(255, 255, 255, 0.92)
+    ), url('images/info.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.apropos_ecole div:hover img {
+    transform: scale(1.1);
+}
+
+/* ========== SECTION PROGRAMMES ========== */
+.programme {
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(
+        90deg,
+        rgba(249, 249, 244, 0.85),
+        rgba(244, 246, 249, 0.75)
+    ), url('images/1.png');
+    background-size: cover;
+    background-position: center;
+    align-items: center;
+    padding: clamp(40px, 5vw, 70px) 20px !important;
+}
+
+.titre_programme {
+    color: var(--bleu_primaire);
+    font-size: clamp(24px, 3.5vw, 38px);
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.des_programme {
+    color: #555555;
+    font-size: clamp(14px, 1.4vw, 16px);
+    margin-bottom: 40px;
+    text-align: center;
+    max-width: 700px;
+    line-height: 1.6;
+}
+
+.fil {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.i {
+    min-height: 240px; 
+    width: clamp(230px, 20vw, 270px); 
+    background-color: white;
+    border: 1px solid #edf2f7;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.04);
+    border-radius: 24px;
+    padding: 25px 20px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.haut {
+    height: auto;
+    align-items: center;
+    display: flex;
+    margin-bottom: 15px;
+    gap: 12px;
+}
+
+.haut img {
+    width: clamp(45px, 5vw, 60px);
+    height: auto;
+    object-fit: contain;
+}
+
+.option {
+    color: var(--bleu_primaire);
+    font-size: clamp(15px, 1.4vw, 17px);
+    margin-bottom: 4px;
+    font-weight: bold;
+}
+
+.op {
+    color: #666666;
+    margin: 3px 0;
+    font-size: clamp(12px, 1.1vw, 13px);
+    line-height: 1.4;
+}
+
+.bas {
+    margin-top: auto;
+    padding-top: 15px;
+}
+
+.bas a {
+    text-decoration: none;
+    color: var(--vert_primaire);
+    font-size: clamp(13px, 1.1vw, 14px);
+    font-weight: bold;
+    transition: color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.bas a:hover {
+    color: var(--bleu_clair);
+}
+
+/* Effet Hover asymétrique */
+.i:hover {
+    box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.1);
+    transform: translateY(-6px);
+    border-color: rgba(0, 26, 102, 0.1);
+    background: linear-gradient(
+        rgba(255, 255, 255, 0.9),
+        rgba(255, 255, 255, 0.95)
+    ), url('images/1.png');
+    background-position: center;
+    background-size: cover;
+}
+
+/* ========== SECTION ACTUALITÉS ========== */
+.actu {
+    min-height: auto;
+    padding: clamp(40px, 5vw, 70px) clamp(20px, 4vw, 50px) !important;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+}
+
+.titre_actu {
+    color: var(--bleu_primaire);
+    font-size: clamp(13px, 1.5vw, 15px);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background-color: rgba(0, 26, 102, 0.06);
+    padding: 8px 22px;
+    border-radius: 50px;
+    margin-bottom: 35px;
+}
+
+.actu1 {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 35px;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    max-width: 1100px;
+}
+
+.der_nouv {
+    color: #111111;
+    font-size: clamp(20px, 2.5vw, 28px);
+    font-weight: bold;
+}
+
+.plus_actu {
+    background-color: var(--bleu_primaire);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: clamp(14px, 1.2vw, 15px);
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 4px 10px rgba(0,26,102,0.15);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.plus_actu:hover {
+    background-color: var(--vert_primaire);
+    transform: translateY(-2px);
+    box-shadow: 0px 6px 15px rgba(0,0,0,0.2);
+}
+
+.box_actu {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.actua {
+    min-height: 350px;
+    width: clamp(260px, 24vw, 340px);
+    background-color: #ffffff;
+    border: 1px solid #edf2f7;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.05);
+    border-radius: 24px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.actua:hover {
+    transform: translateY(-8px);
+    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.12);
+    border-color: rgba(0, 26, 102, 0.05);
+}
+
+.actu_img {
+    width: 100%;
+    height: 170px;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.actu_img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.actua:hover .actu_img img {
+    transform: scale(1.08);
+}
+
+.box_titre_actu {
+    color: var(--bleu_primaire);
+    font-size: clamp(15px, 1.3vw, 17px);
+    font-weight: bold;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.content_actu {
+    color: #555555;
+    font-size: clamp(13px, 1.1vw, 14px);
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   SCROLL REVEAL & FLOATING ANIMATIONS
+   ========================================================================== */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.reveal.visible, .reveal-left.visible, .reveal-right.visible, .item-coordonnee.visible {
+    opacity: 1;
+    transform: translate(0);
+}
+
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+
+/* Nouvelles Keyframes d'animation d'entrée globale */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes continuousFloat {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+}
+
+.floating-effect img {
+    animation: continuousFloat 5s ease-in-out infinite;
+}
+
+/* ========================================================
+   CSS COMPLÉMENTAIRE : HORAIRES DÉBUT ET BOUTON RACCOURCI
+   ======================================================== */
+
+/* Bouton raccourci flottant (Widget au coin de la page) */
+.btn-raccourci-horaire {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--bleu_clair, #00a8ff);
+    color: #ffffff;
+    padding: 12px 20px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.btn-raccourci-horaire:hover {
+    transform: scale(1.05) translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    background: #ffffff;
+    color: var(--bleu_primaire);
+}
+
+/* Grille des 4 Blocs de facultés */
+.grille-horaires-facultes {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Style individuel des liens/cartes de facultés */
+.carte-horaire-faculte {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 14px;
+    padding: 25px 20px;
+    text-decoration: none;
+    color: #ffffff !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+    backdrop-filter: blur(10px);
+}
+
+.carte-horaire-faculte:hover {
+    background: #ffffff;
+    color: var(--bleu_primaire) !important;
+    transform: translateY(-7px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    border-color: #ffffff;
+}
+
+/* Éléments internes de la carte */
+.icone-faculte-h {
+    font-size: 32px;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+.carte-horaire-faculte:hover .icone-faculte-h {
+    transform: scale(1.15);
+}
+
+.carte-horaire-faculte h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.carte-horaire-faculte p {
+    font-size: 12.5px;
+    opacity: 0.8;
+    text-align: center;
+    line-height: 1.4;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+.carte-horaire-faculte:hover p {
+    color: #555555;
+    opacity: 1;
+}
+
+.btn-consulter-h {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--bleu_clair, #00a8ff);
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+.carte-horaire-faculte:hover .btn-consulter-h {
+    color: var(--bleu_primaire);
+}
+
+/* ==========================================================================
+   STYLES SPECIFIQUES DES NOUVELLES PAGES (À PROPOS CUSTOM)
+   ========================================================================== */
+.section-apropos-custom {
+    background: #ffffff;
+    padding-top: 120px !important; /* Pousse le contenu vers le bas juste assez sous le header */
+    padding-bottom: 60px !important;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.title-badge-custom {
+    color: var(--bleu_primaire);
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    background-color: var(--bleu_tres_clair);
+    padding: 8px 18px;
+    border-radius: 50px;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.grid-ecoles-fusion {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 25px;
+    max-width: 1000px;
+    margin: 30px auto 0;
+}
+
+.card-ecole-custom {
+    background: #ffffff;
+    border: 1px solid #edf2f7;
+    border-radius: 20px;
+    padding: 25px 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.card-ecole-custom img {
+    height: 55px;
+    width: auto;
+    object-fit: contain;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.card-ecole-custom p {
+    font-size: 13px;
+    color: #333;
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+.card-ecole-custom:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 30px rgba(0, 26, 102, 0.08);
+    border-color: rgba(0, 26, 102, 0.08);
+}
+
+.card-ecole-custom:hover img {
+    transform: scale(1.05);
+}
+
+.grid-valeurs-custom {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+    max-width: 1000px;
+    margin: 30px auto;
+    width: 100%;
+}
+
+.card-valeur-custom {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 30px 22px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    border-top: 4px solid var(--vert_primaire);
+    border-left: 1px solid #edf2f7;
+    border-right: 1px solid #edf2f7;
+    border-bottom: 1px solid #edf2f7;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-valeur-custom:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+.card-valeur-custom h3 {
+    color: var(--bleu_primaire);
+    font-size: 19px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* ==========================================================================
+   PROGRAMME CUSTOM
+   ========================================================================== */
+body.theme-page-programme {
+    background-color: #ffffff !important;
+    color: #222222;
+}
+
+.programme-intro-header {
+    text-align: center; 
+    padding-top: 40px;
+    padding-bottom: 10px;
+}
+
+.sousTitre-programme {
+    color: #111111;
+    font-size: clamp(22px, 3vw, 34px);
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.des-programme-custom {
+    color: #555555;
+    font-size: clamp(14px, 1.3vw, 16px);
+    text-align: center;
+    margin: 0 auto 20px;
+    max-width: 650px;
+    line-height: 1.6;
+    padding: 0 20px;
+}
+
+.block-faculte-custom {
+    display: flex;
+    align-items: center;
+    gap: 40px; 
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 20px !important;
+    background-color: #ffffff;
+}
+
+.faculte-titre-custom {
+    text-align: left; 
+    font-size: clamp(20px, 2.5vw, 28px); 
+    color: var(--bleu_primaire);
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.options-wrapper-custom {
+    margin-top: 25px;
+}
+
+.image-faculte-wrapper img {
+    max-width: 300px; 
+    border-radius: 24px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+    transition: transform 0.4s ease;
+}
+
+.block-faculte-custom:hover .image-faculte-wrapper img {
+    transform: scale(1.02);
+}
+
+/* ========================================================
+   CORRECTION CONFLIT : BOUTONS CÔTE À CÔTE ET EFFET LUMIÈRE
+   ======================================================== */
+
+/* Conteneur horizontal en bas à droite */
+.groupe-boutons-flottants-horizontal {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    flex-direction: row; /* Aligne les boutons sur la même ligne */
+    gap: 15px;          /* Espace parfait entre les deux boutons */
+    z-index: 1001;      /* Passe au-dessus de tout le reste du site */
+}
+
+/* Base commune des boutons style pilule moderne */
+.btn-flottant-custom {
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #ffffff !important;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 2px solid transparent;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Couleurs de base par bouton */
+.btn-raccourci-horaire {
+    background: #00a8ff; /* Bleu clair dynamique */
+}
+
+.btn-transport-scolaire {
+    background: #2ecc71; /* Vert transport moderne */
+}
+
+/* --- EFFETS D'ALLUMAGE (HOVER EFFECT) --- */
+
+/* Allumage du bouton Horaires au survol (Lueur Bleue) */
+.btn-raccourci-horaire:hover {
+    transform: translateY(-4px);
+    background: #00a8ff;
+    color: #ffffff !important;
+    border-color: #ffffff;
+    /* Effet d'allumage néon bleu */
+    box-shadow: 0 8px 25px rgba(0, 168, 255, 0.6), 0 0 10px rgba(0, 168, 255, 0.4);
+}
+
+/* Allumage du bouton Bus au survol (Lueur Verte) */
+.btn-transport-scolaire:hover {
+    transform: translateY(-4px);
+    background: #2ecc71;
+    color: #ffffff !important;
+    border-color: #ffffff;
+    /* Effet d'allumage néon vert */
+    box-shadow: 0 8px 25px rgba(46, 204, 113, 0.6), 0 0 10px rgba(46, 204, 113, 0.4);
+}
+
+/* Effet d'enfoncement discret quand on clique */
+.btn-flottant-custom:active {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* --- RESPONSIVE MOBILE ACCESSIBLE --- */
+@media screen and (max-width: 576px) {
+    .groupe-boutons-flottants-horizontal {
+        bottom: 15px;
+        right: 15px;
+        left: 15px; /* S'étire sur mobile pour être centré et accessible */
+        justify-content: center;
+        gap: 10px;
+    }
+    .btn-flottant-custom {
+        padding: 10px 16px;
+        font-size: 12.5px;
+        flex: 1; /* Les deux boutons prennent la même taille sur petit écran */
+        justify-content: center;
+    }
+}
+
+
+
+.btn-raccourci-horaire {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--bleu_clair, #00a8ff);
+    color: #ffffff;
+    padding: 12px 20px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.btn-raccourci-horaire:hover {
+    transform: scale(1.05) translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    background: #ffffff;
+    color: var(--bleu_primaire);
+}
+
+/* Grille des 4 Blocs de facultés (Horaires) */
+.grille-horaires-facultes {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.carte-horaire-faculte {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 14px;
+    padding: 25px 20px;
+    text-decoration: none;
+    color: #ffffff !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.35s ease;
+    backdrop-filter: blur(10px);
+}
+.carte-horaire-faculte:hover {
+    background: #ffffff;
+    color: var(--bleu_primaire) !important;
+    transform: translateY(-5px);
+}
+.icone-faculte-h { font-size: 32px; margin-bottom: 12px; }
+.carte-horaire-faculte h3 { font-size: 16px; margin-bottom: 8px; text-align: center; }
+.carte-horaire-faculte p { font-size: 12.5px; opacity: 0.8; text-align: center; margin-bottom: 15px; flex-grow: 1; }
+.btn-consulter-h { font-size: 12px; font-weight: 600; color: var(--bleu_clair); text-transform: uppercase; }
+
+/* Styles internes pour appliquer les détails dans TES cartes d'origine */
+.item-option-custom {
+    background: #ffffff;
+    border: 1px solid rgba(0, 26, 102, 0.06) !important;
+    border-radius: 14px !important;
+    padding: 24px !important;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02) !important;
+    transition: all 0.3s ease !important;
+    display: flex;
+    flex-direction: column;
+}
+.item-option-custom:hover {
+    transform: translateY(-4px) !important;
+    border-color: var(--bleu_primaire) !important;
+    box-shadow: 0 10px 25px rgba(0, 26, 102, 0.07) !important;
+}
+
+/* Filigrane discret */
+.item-option-custom::before {
+    content: attr(data-id);
+    position: absolute;
+    bottom: -10px;
+    right: 10px;
+    font-size: 55px;
+    font-weight: 900;
+    color: rgba(0, 26, 102, 0.02);
+    pointer-events: none;
+}
+
+/* Ligne supérieure de la carte */
+.option-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    gap: 10px;
+}
+.item-option-custom h3 {
+    color: var(--bleu_primaire) !important;
+    font-size: 16px !important;
+    margin-bottom: 0 !important;
+    font-weight: 700 !important;
+    line-height: 1.3;
+}
+.item-option-custom p {
+    color: #555555 !important;
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+    margin-bottom: 15px !important;
+    flex-grow: 1;
+}
+
+/* Le fameux petit bouton de durée */
+.duree-tag {
+    font-size: 11px;
+    background: rgba(0, 26, 102, 0.06);
+    color: var(--bleu_primaire);
+    padding: 3px 9px;
+    border-radius: 20px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Les petits boutons avec contours pour les métiers (ex: Fullstack) */
+.metiers-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    z-index: 2;
+}
+.metiers-tags span {
+    font-size: 11px;
+    background: #ffffff;
+    color: #555555;
+    padding: 3px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(0, 26, 102, 0.15); /* Contours fins et élégants */
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+.item-option-custom:hover .metiers-tags span {
+    border-color: var(--bleu_primaire);
+    color: var(--bleu_primaire);
+    background: rgba(0, 26, 102, 0.02);
+}
+
+/* Badge de la Faculté au-dessus du titre */
+.faculte-badge-header { margin-bottom: 8px; }
+.badge-filiere-tech {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    background: rgba(7, 7, 182, 0.08);
+    color: var(--bleu_clair);
+    padding: 4px 10px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+}
+
+.grille-horaires-2x2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    margin-top: 10px;
+}
+
+/* Cartes horaires blanches style épuré */
+.carte-horaire-blanche {
+    background: #ffffff;
+    border: 1px solid rgba(0, 26, 102, 0.08);
+    border-radius: 14px;
+    padding: 25px;
+    text-decoration: none;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.carte-horaire-blanche:hover {
+    transform: translateY(-4px);
+    border-color: var(--bleu_primaire);
+    box-shadow: 0 12px 30px rgba(0, 26, 102, 0.06);
+}
+
+.icone-faculte-h {
+    font-size: 36px;
+    background: rgba(0, 26, 102, 0.04);
+    padding: 12px;
+    border-radius: 12px;
+    line-height: 1;
+}
+
+.carte-h-texte {
+    display: flex;
+    flex-direction: column;
+}
+
+.carte-h-texte h3 {
+    color: var(--bleu_primaire);
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.carte-h-texte p {
+    color: #666666;
+    font-size: 13.5px;
+    line-height: 1.4;
+    margin-bottom: 12px;
+}
+
+.link-voir-planning {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--bleu_clair, #00a8ff);
+    transition: color 0.2s;
+}
+.carte-horaire-blanche:hover .link-voir-planning {
+    color: var(--bleu_primaire);
+    text-decoration: underline;
+}
+
+/* Responsive : Passage en 1 seule colonne sur mobile */
+@media screen and (max-width: 850px) {
+    .grille-horaires-2x2 {
+        grid-template-columns: 1fr;
+    }
+}
+/* Boîte de partenariat Cisco Academy */
+.certification-academy-box {
+    display: flex;
+    gap: 15px;
+    background: linear-gradient(to right, rgba(3, 3, 157, 0.04), rgba(3, 3, 157, 0.01));
+    border-left: 4px solid var(--bleu_clair);
+    padding: 18px;
+    border-radius: 4px 12px 12px 4px;
+    margin-top: 25px;
+    align-items: center;
+}
+.cert-icon { font-size: 26px; }
+.cert-text h4 { font-size: 14.5px; color: var(--bleu_primaire); margin-bottom: 3px; font-weight: 700; }
+.cert-text p { font-size: 12.5px; color: #555555; margin: 0 !important; line-height: 1.4; }
+
+/* Styles de la nouvelle section Admission */
+.section-admission-programme {
+    padding: 60px 40px;
+    background: #f8fafc;
+    display: flex;
+    justify-content: center;
+}
+.admission-content-box { width: 100%; max-width: 1100px; }
+.badge-admission {
+    background: green; color: white; width: fit-content; padding: 4px 12px; 
+    border-radius: 20px; font-size: 11px; font-weight: 600; text-transform: uppercase; margin-bottom: 12px;
+}
+.admission-content-box h2 { font-size: 26px; color: var(--bleu_primaire); font-weight: 700; }
+.admission-content-box > p { font-size: 14.5px; color: #666666; margin-bottom: 30px; }
+.dossier-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; }
+.dossier-list-box { background: white; padding: 25px; border-radius: 14px; border: 1px solid rgba(0,0,0,0.04); }
+.dossier-list-box h3, .processus-box h3 { font-size: 17px; color: var(--bleu_primaire); margin-bottom: 15px; font-weight: 700; }
+.dossier-list-box ul { list-style: none; }
+.dossier-list-box ul li { font-size: 13.5px; color: #444444; padding: 8px 0; border-bottom: 1px dashed #e2e8f0; position: relative; padding-left: 20px; }
+.dossier-list-box ul li::before { content: "✓"; color: green; position: absolute; left: 0; font-weight: bold; }
+.dossier-list-box ul li:last-child { border-bottom: none; }
+.steps-admission { display: flex; flex-direction: column; gap: 15px; }
+.step-item { display: flex; gap: 12px; align-items: flex-start; }
+.step-num { 
+    background: var(--bleu_primaire); color: white; min-width: 28px; height: 28px; 
+    border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px;
+}
+.step-item p { font-size: 13px; color: #444444; line-height: 1.4; margin: 0 !important; padding-top: 4px; }
+
+/* Responsive adaptatif */
+@media screen and (max-width: 992px) {
+    .grille-horaires-facultes { grid-template-columns: repeat(2, 1fr); }
+    .dossier-grid { grid-template-columns: 1fr; gap: 20px; }
+}
+@media screen and (max-width: 576px) {
+    .grille-horaires-facultes { grid-template-columns: 1fr; }
+    .section-admission-programme { padding: 40px 20px; }
+}
+
+/* ========== VIE ÉTUDIANT CUSTOM ========== */
+.wrapper-campus-custom {
+    gap: 35px;
+    max-width: 1000px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.box-icone-activite {
+    padding: 14px 20px;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+    transition: transform 0.2s;
+}
+
+.box-icone-activite:hover {
+    transform: translateY(-2px);
+}
+
+.box-icone-activite img {
+    width: 28px;
+    height: 28px;
+}
+
+.box-icone-activite span {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.mosaique-galerie-custom {
+    gap: 15px;
+}
+
+.img-mosaique-custom {
+    height: 140px;
+    border-radius: 16px;
+    transition: all 0.4s ease;
+}
+
+.img-mosaique-custom:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* ========== CONTACT CUSTOM ========== */
+body.theme-page-contact {
+    background-color: #ffffff !important;
+    color: #222222;
+}
+
+.contact-intro-header {
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 10px;
+}
+
+.container-contact-custom {
+    display: flex;
+    max-width: 1100px;
+    margin: 0 auto 60px;
+    gap: 40px;
+    padding: 0 20px;
+    width: 100%;
+}
+
+.form-wrapper-custom, .info-wrapper-custom {
+    flex: 1;
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 24px;
+    border: 1px solid #edf2f7;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+}
+
+.info-wrapper-custom {
+    background: #ffffff;
+    border-left: 4px solid var(--bleu_primaire);
+}
+
+.form-wrapper-custom h2, .info-wrapper-custom h2 {
+    color: var(--bleu_primaire);
+    font-size: 22px;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #f0f4f8;
+    padding-bottom: 12px;
+    font-weight: bold;
+}
+
+.form-group-custom {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group-custom label {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    color: #444444;
+    margin-bottom: 8px;
+}
+
+.form-group-custom input, .form-group-custom textarea {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    font-size: 14px;
+    color: #333333;
+    transition: all 0.3s ease;
+    background-color: #ffffff;
+}
+
+.form-group-custom input:focus, .form-group-custom textarea:focus {
+    border-color: var(--bleu_primaire);
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(0, 26, 102, 0.08);
+}
+
+.btn-submit-custom {
+    width: 100%;
+    background-color: var(--bleu_primaire);
+    color: #ffffff;
+    border: none;
+    padding: 15px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0px 4px 12px rgba(0,26,102,0.15);
+    transition: all 0.3s ease;
+}
+
+.btn-submit-custom:hover {
+    background-color: var(--bleu_clair);
+    transform: translateY(-2px);
+    box-shadow: 0px 6px 15px rgba(0,26,102,0.2);
+}
+
+.info-item-custom {
+    margin-bottom: 22px;
+    text-align: left;
+}
+
+.info-item-custom h3 {
+    font-size: 16px;
+    color: var(--bleu_primaire);
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+.info-item-custom p {
+    font-size: 14px;
+    color: #555555;
+    line-height: 1.5;
+}
+
+.info-item-custom a {
+    color: var(--bleu_clair);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.info-item-custom a:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   PAGE SERVICES CUSTOM
+   ========================================================================== */
+body.theme-page-services {
+    background-color: #ffffff !important;
+    color: #222222;
+}
+
+.services-intro-header {
+    text-align: center;
+    padding-top: 100px;
+    padding-bottom: 10px;
+}
+
+.section-services-grid {
+    padding: 20px clamp(20px, 4vw, 40px);
+    width: 100%;
+}
+
+.grid-services-custom {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.card-service-custom {
+    background-color: #ffffff;
+    border: 1px solid #edf2f7;
+    border-radius: 24px;
+    padding: 30px 22px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.03);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1); 
+}
+
+.card-service-custom h3 {
+    color: var(--bleu_primaire);
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    position: relative;
+    z-index: 2;
+}
+
+.card-service-custom p {
+    font-size: 13px;
+    color: #555555;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.icon-circle {
+    font-size: 35px;
+    margin-bottom: 18px;
+    background-color: #f8f9fa;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    position: relative;
+    z-index: 2;
+    transition: all 0.4s ease;
+}
+
+.service-action {
+    margin-top: auto;
+    position: relative;
+    z-index: 2;
+}
+
+.btn-service {
+    display: inline-block;
+    text-decoration: none;
+    background-color: var(--bleu_primaire);
+    color: white;
+    padding: 10px 22px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,26,102,0.15);
+}
+
+.btn-service:hover {
+    background-color: var(--vert_primaire);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.card-service-custom:hover {
+    box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.1);
+    transform: translateY(-6px);
+    border-color: rgba(0, 26, 102, 0.08);
+    background: linear-gradient(
+        rgba(255, 255, 255, 0.85), 
+        rgba(255, 255, 255, 0.92)
+    ), url('images/info.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.card-service-custom:hover .icon-circle {
+    transform: scale(1.05);
+    background-color: white;
+}
+
+/* ========== BLOC HORAIRES DES BUS ========== */
+.section-horaires-bus {
+    padding: 40px clamp(20px, 4vw, 40px);
+    width: 100%;
+    background-color: #ffffff;
+}
+
+.block-horaires-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.horaires-texte {
+    flex: 1;
+}
+
+.bus-placeholder-card {
+    background: #ffffff;
+    border: 1px solid #edf2f7;
+    padding: 30px;
+    border-radius: 24px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+    max-width: 280px;
+    width: 100%;
+    transition: transform 0.3s ease;
+}
+
+.bus-placeholder-card:hover {
+    transform: translateY(-4px);
+}
+
+.bus-badge {
+    background-color: var(--vert_primaire);
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 5px 14px;
+    border-radius: 50px;
+    display: inline-block;
+    margin-bottom: 12px;
+}
+
+.bus-placeholder-card h4 {
+    color: var(--bleu_primaire);
+    font-size: 17px;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+/* ==========================================================================
+   MEDIA QUERIES & RESPONSIVE DESIGN (CONSERVÉ ET HARMONISÉ)
+   ========================================================================== */
+@media screen and (max-width: 1024px) {
+    .part1 {
+        flex-direction: column;
+        text-align: center;
+    }
+    .p1 {
+        max-width: 100%;
+        order: 1;
+    }
+    .p2 {
+        display: none;
+    }
+    .present, .faire {
+        justify-content: center;
+    }
+    .apropos_ecole div {
+        width: calc(50% - 15px);
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .block-faculte-custom, 
+    .block-faculte-custom.layout-reverse,
+    .wrapper-campus-custom,
+    .container-contact-custom,
+    .block-horaires-wrapper {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .card-valeur-custom, .item-option-custom, .bloc-contact-info, .bus-placeholder-card {
+        text-align: center;
+    }
+    .item-option-custom {
+        border-left: none;
+        border-top: 4px solid var(--bleu_primaire);
+        border-radius: 16px;
+    }
+    .form-row-custom {
+        flex-direction: column;
+        gap: 12px;
+    }
+    .item-coordonnee {
+        flex-direction: column;
+        gap: 6px;
+        align-items: center;
+        text-align: center;
+    }
+    .image-faculte-wrapper, .mosaique-galerie-custom, .bloc-contact-info, .bloc-contact-formulaire {
+        margin-top: 20px;
+        width: 100%;
+        max-width: 500px;
+    }
+    .bus-placeholder-card {
+        max-width: 320px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .section-apropos-custom, 
+    .block-faculte-custom, 
+    .container-contact-custom {
+        flex-direction: column !important;
+        gap: 25px !important;
+        margin-top: 20px !important;
+        margin-bottom: 40px !important;
+        padding: 0 15px !important;
+        width: 100% !important;
+    }
+
+    .form-wrapper-custom, .info-wrapper-custom {
+        padding: 25px;
+    }
+
+    .image-faculte-wrapper img, .p2 img {
+        max-width: 100% !important;
+        height: auto !important;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .p1, 
+    .section-apropos-custom, 
+    .block-faculte-custom, 
+    .container-contact-custom, 
+    .apropos_ecole, 
+    .box_actu, 
+    .grid-ecoles-fusion,
+    .grid-valeurs-custom,
+    .container-icones-activites,
+    .mosaique-galerie-custom,
+    .bar_section2,
+    .actu1 {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        padding-top: 40px !important;
+        padding-bottom: 40px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    .bar_section1 {
+        min-height: 60px !important;
+        gap: 15px !important;        
+        padding: 10px !important;
+    }
+
+    .bar_section1 p {
+        font-size: 25px !important;  
+    }
+
+    .bar_section1 img {
+        height: 250px !important;
+    }
+
+    .apropos_ecole, 
+    .box_actu, 
+    .grid-ecoles-fusion {
+        margin: 0 auto !important;
+        padding: 0 !important;
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 20px !important;
+    }
+
+    .apropos_ecole div, 
+    .actua,
+    .card-valeur-custom,
+    .form-wrapper-custom,
+    .info-wrapper-custom {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 0 20px 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    .grid-valeurs-custom {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 15px;
+        padding: 10px 20px 20px 20px;
+        margin-left: -20px;
+        margin-right: -20px;
+        width: calc(100% + 40px);
+    }
+
+    .grid-valeurs-custom::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .grid-valeurs-custom {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .card-valeur-custom {
+        flex: 0 0 260px;
+        scroll-snap-align: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+    
+    .grid-valeurs-custom .reveal {
+        transform: translateY(15px);
+    }
+    .grid-valeurs-custom .reveal.visible {
+        transform: translateY(0);
+    }
+
+    body {
+        padding-top: 60px;
+    }
+
+    .menu-toggle {
+        display: block;
+        order: 2;
+    }
+
+    .navBar {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 0;
+        padding: 10px 0;
+        background-color: var(--bleu_primaire);
+        order: 3;
+    }
+
+    .navBar.active {
+        display: flex;
+    }
+
+    .navBar a {
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+        border-radius: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .active {
+        border-radius: 0;
+    }
+
+    header {
+        flex-wrap: wrap;
+    }
+
+    .titre_header h2 {
+        font-size: 13px;
+    }
+
+    .titre_header img {
+        width: 35px;
+    }
+
+    .UNIVERSITE, .DON, .LUSHI {
+        margin: 0px auto 10px 0px;
+    }
+
+    .bar_section1 {
+        height: 50px;
+    }
+
+    .apropos_ecole div {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .actu1 {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .box_actu {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .actua {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .grid-ecoles-fusion {
+        grid-template-columns: 1fr;
+        max-width: 280px;
+    }
+    .container-icones-activites, .mosaique-galerie-custom {
+        grid-template-columns: 1fr;
+    }
+    .bloc-contact-formulaire, .bloc-contact-info {
+        padding: 20px 15px;
+    }
+}
+
+.p1, 
+.bar_section1, 
+.bar_section2, 
+.actu1,
+.section-apropos-custom, 
+.block-faculte-custom, 
+.container-contact-custom {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 50px !important;
+    padding-bottom: 50px !important;
+    box-sizing: border-box !important;
+}
+
+@media screen and (max-width: 480px) {
+    .faire {
+        flex-direction: column;
+    }
+    .faire img {
+        width: 160px;
+    }
+    .faire button {
+        width: 100%;
+    }
+    .i {
+        width: 100%;
+        max-width: 280px;
+    }
+    .p1, 
+    .section-apropos-custom, 
+    .block-faculte-custom, 
+    .container-contact-custom,
+    .bar_section2,
+    .actu1 {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        padding-top: 40px !important;
+        padding-bottom: 40px !important;
+    }
+
+    .apropos_ecole, 
+    .box_actu, 
+    .grid-ecoles-fusion {
+        margin: 0 auto !important;
+        padding: 0 !important;
+        width: 100% !important;
+    }
+
+    .apropos_ecole div, 
+    .actua,
+    .form-wrapper-custom,
+    .info-wrapper-custom {
+        margin-top: 0 !important;
+        margin-bottom: 20px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .part1 {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .apropos_ecole, .fil, .box_actu {
+        max-width: 1100px;
+    }
+}
+
+/* ========== FOOTER ========== */
+footer {
+    width: 100%;
+    background: linear-gradient(
+        rgba(240, 244, 248, 0.98),
+        rgba(240, 244, 248, 0.98)
+    ), url('images/1.png');
+    background-size: cover;
+    padding: 30px 20px 15px;
+    color: #333333;
+    border-top: 1px solid #e2e8f0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto 20px;
+}
+
+.footer-section {
+    text-align: center;
+    min-width: 180px;
+}
+
+.footer-section h3 {
+    font-size: clamp(16px, 1.5vw, 19px);
+    margin-bottom: 10px;
+    color: var(--bleu_primaire);
+    font-weight: bold;
+}
+
+.footer-section p {
+    font-size: clamp(12px, 1.1vw, 14px);
+    line-height: 1.5;
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 15px;
+    font-size: 12px;
+    color: #666666;
+}
