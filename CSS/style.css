@@ -292,10 +292,10 @@ section {
 
 .faire {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     margin-top: 20px;
-    gap: 20px;
+    gap: 15px;
     flex-wrap: wrap;
 }
 
@@ -310,25 +310,36 @@ section {
     transform: scale(1.05);
 }
 
-.faire button {
+.faire button, .faire .btn-service-hero {
     padding: 12px 26px;
     height: auto;
     color: white;
     font-size: clamp(14px, 1.3vw, 16px);
     background-color: var(--bleu_primaire);
-    border-radius: 30px; /* Plus arrondi pour correspondre aux UI modernes */
+    border-radius: 30px;
     border: none;
     cursor: pointer;
     box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
     transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
     white-space: nowrap;
     font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
 }
 
-.faire button:hover {
+.faire .btn-service-hero {
+    background-color: var(--vert_primaire);
+}
+
+.faire button:hover, .faire .btn-service-hero:hover {
     background-color: var(--vert_primaire);
     transform: translateY(-3px);
     box-shadow: 0px 8px 20px rgba(0,0,0,0.3);
+}
+
+.faire .btn-service-hero:hover {
+    background-color: var(--bleu_primaire);
 }
 
 .p2 {
@@ -336,8 +347,18 @@ section {
     flex: 0 0 auto;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     animation: fadeInRight 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    overflow: hidden;
+    max-height: 100%;
+}
+
+.p2-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    max-height: 75vh;
+    display: flex;
+    align-items: flex-end;
 }
 
 .p2 img {
@@ -345,6 +366,9 @@ section {
     position: relative;
     z-index: 3;
     height: auto;
+    max-height: 75vh;
+    object-fit: contain;
+    object-position: bottom;
     filter: drop-shadow(0px 10px 20px rgba(0,0,0,0.15));
 }
 
@@ -1916,6 +1940,10 @@ body.theme-page-services {
     .present, .faire {
         justify-content: center;
     }
+    .faire button, .faire .btn-service-hero {
+        width: auto;
+        min-width: 200px;
+    }
     .apropos_ecole div {
         width: calc(50% - 15px);
     }
@@ -1960,6 +1988,18 @@ body.theme-page-services {
 }
 
 @media screen and (max-width: 768px) {
+    .faire {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+    .faire button, .faire .btn-service-hero {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+    }
     .section-apropos-custom, 
     .block-faculte-custom, 
     .container-contact-custom {
@@ -2188,12 +2228,16 @@ body.theme-page-services {
 @media screen and (max-width: 480px) {
     .faire {
         flex-direction: column;
+        align-items: stretch;
     }
     .faire img {
         width: 160px;
+        margin: 0 auto;
     }
-    .faire button {
+    .faire button, .faire .btn-service-hero {
         width: 100%;
+        text-align: center;
+        justify-content: center;
     }
     .i {
         width: 100%;
